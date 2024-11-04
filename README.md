@@ -22,7 +22,7 @@
    - [Advanced Analysis](#advanced-analysis)
 8. [Key Findings](#key-findings)
 9. [Conclusion](#conclusion)
-10. [Faced Errors](#faced_errors)
+10. [Key Faced Errors](#key_faced_errors)
     [References](#references)
     [Timeline](#Timeline)
 
