@@ -22,8 +22,9 @@
    - [Platform Popularity](#platform-popularity)
    - [Advanced Analysis](#advanced-analysis)
 8. [Key Findings](#key-findings)
-9. [Conclusion](#conclusion)
-10. [References](#references)
+9. [Faced Errors](#faced_errors)
+10. [Conclusion](#conclusion)
+11. [References](#references)
 
 ---
 
