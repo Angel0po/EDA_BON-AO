@@ -12,7 +12,6 @@
 6. [Data Cleaning](#data-cleaning)
    - [Missing Values](#missing-values)
    - [Duplicates](#duplicates)
-   - [Outliers](#outliers)
 7. [Analysis](#analysis)
    - [Overview of Dataset](#overview-of-dataset)
    - [Basic Descriptive Statistics](#basic-descriptive-statistics)
@@ -22,30 +21,39 @@
    - [Platform Popularity](#platform-popularity)
    - [Advanced Analysis](#advanced-analysis)
 8. [Key Findings](#key-findings)
-9. [Faced Errors](#faced_errors)
-10. [Conclusion](#conclusion)
-11. [References](#references)
+9. [Conclusion](#conclusion)
+10. [Faced Errors](#faced_errors)
+    [References](#references)
+    [Timeline](#Timeline)
 
 ---
 
 ### 1. Project Overview
 Briefly describe the purpose and motivation of this EDA project. Explain why this dataset is interesting or important to analyze.
 
+---
+
 ### 2. Dataset Description
 - **Source**: Describe the origin of the dataset (include link if available).
 - **Description**: Provide a short description of the dataset and its context.
 - **Features**: List each column, including its name, data type, and a brief description of its contents.
+
+---
 
 ### 3. Project Goals
 State the main objectives of this analysis. For example:
 - Gain insights into streaming patterns and track popularity.
 - Explore relationships between musical characteristics and streaming counts.
 
+---
+
 ### 4. Installation and Setup
 Provide instructions on setting up the environment to run the analysis:
 - **Requirements**: List the libraries and packages needed (e.g., Pandas, Matplotlib).
 - **Environment**: Specify the Python version and any dependencies.
 - **How to Run**: Include instructions to run the notebook or code.
+
+---
 
 ### 5. Data Exploration
 
@@ -57,6 +65,8 @@ Provide instructions on setting up the environment to run the analysis:
   - Shape of the dataset (number of rows and columns)
   - Data types of each column
   - Presence of any missing values
+ 
+---
 
 ### 6. Data Cleaning
 
@@ -66,8 +76,7 @@ Provide instructions on setting up the environment to run the analysis:
 #### Duplicates
 - Check for duplicate rows and explain how you addressed them.
 
-#### Outliers
-- Identify any outliers in key columns and describe the approach taken to handle them.
+---
 
 ### 7. Analysis
 
@@ -92,11 +101,23 @@ Provide instructions on setting up the environment to run the analysis:
 #### Advanced Analysis
 - Perform any additional analysis, such as correlations or pattern analysis across keys or modes.
 
+---
+
 ### 8. Key Findings
 Summarize the major insights gained from the analysis.
+
+---
 
 ### 9. Conclusion
 Provide a brief conclusion of the project findings.
 
-### 10. References
+---
+
+### 10. Faced Errors
+
+---
+
+### References
 List any references used for the analysis.
+
+### Timeline
