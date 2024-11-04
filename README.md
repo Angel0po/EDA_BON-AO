@@ -2,17 +2,17 @@
 # Project Title: Exploratory Data Analysis of [Dataset Name]
 
 ## Table of Contents
-1. [Project Overview](#project-overview)
-2. [Dataset Description](#dataset-description)
-3. [Project Goals](#project-goals)
-4. [Installation and Setup](#installation-and-setup)
-5. [Data Exploration](#data-exploration)
+* [Project Overview](#project-overview)
+* [Dataset Description](#dataset-description)
+* [Project Goals](#project-goals)
+* [Installation and Setup](#installation-and-setup)
+* [Data Exploration](#data-exploration)
    - [Loading the Data](#loading-the-data)
    - [Initial Observations](#initial-observations)
-6. [Data Cleaning](#data-cleaning)
+* [Data Cleaning](#data-cleaning)
    - [Missing Values](#missing-values)
    - [Duplicates](#duplicates)
-7. [Analysis](#analysis)
+* [Analysis](#analysis)
    - [Overview of Dataset](#overview-of-dataset)
    - [Basic Descriptive Statistics](#basic-descriptive-statistics)
    - [Top Performers](#top-performers)
@@ -20,11 +20,12 @@
    - [Genre and Music Characteristics](#genre-and-music-characteristics)
    - [Platform Popularity](#platform-popularity)
    - [Advanced Analysis](#advanced-analysis)
-8. [Key Findings](#key-findings)
-9. [Conclusion](#conclusion)
-10. [Key Faced Errors](#key_faced_errors)
+* [Key Findings](#key-findings)
+* [Conclusion](#conclusion)
+* [Key Faced Errors](#key_faced_errors)
     
 [References](#references)
+
 [Timeline](#Timeline)
 
 ---
