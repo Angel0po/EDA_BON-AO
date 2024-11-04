@@ -23,8 +23,8 @@
 8. [Key Findings](#key-findings)
 9. [Conclusion](#conclusion)
 10. [Key Faced Errors](#key_faced_errors)
-    [References](#references)
-    [Timeline](#Timeline)
+[References](#references)
+[Timeline](#Timeline)
 
 ---
 
