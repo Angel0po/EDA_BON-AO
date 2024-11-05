@@ -38,24 +38,39 @@ This exploratory data analysis practices one's ability to code, clean data, visu
 ---
 
 ### 2. Dataset Description
-- **Source**: The origin of the dataset comes from Kaggle, a famous data science competition platform, and online community for data scientists and machine learning practitioners under Google LLC.
+The origin of the dataset comes from Kaggle, a famous data science competition platform, and online community for data scientists and machine learning practitioners under Google LLC.
   https://www.kaggle.com/dsv/6367938
   
-- **Description**: This dataset contains a comprehensive list of the most famous songs of 2023 as listed on Spotify. The dataset offers a wealth of features beyond what is typically available in similar datasets. It provides insights into each song's attributes, popularity, and presence on various music platforms (Elgiriyewithana, 2023).
-- 
+This dataset contains a comprehensive list of the most famous songs of 2023 as listed on Spotify. The dataset offers a wealth of features beyond what is typically available in similar datasets. It provides insights into each song's attributes, popularity, and presence on various music platforms (Elgiriyewithana, 2023).
+
 - **Features**: The dataset includes information such as
--
--
--
--
--
--
--
--
--
--
--
-- List each column, including its name, data type, and a brief description of its contents.
+  
+| Column                | Description                          |
+|-----------------------|--------------------------------------|
+| track_name            | Contains the title of the song          |
+| artist(s)_name        | Contains the credited artists      |
+| artist_count          | Contains the number of credited artists        |
+| released_year         | Contains the track's release year     |
+| released_month        | Contains the track's release month |
+| released_day          |Contains the track's release day |
+| in_spotify_playlists  | Contains the track's occurrences in Spotify Playlists  |
+| in_spotify_charts     | Contains the track's occurrences in Spotify Charts   |
+| streams               | Contains the track's number of streams |
+| in_apple_playlists    | Contains the track's occurrences in Apple Music Playlists|
+| in_apple_charts       | Contains the track's occurrences in Apple Music Charts |
+| in_deezer_playlists   | Contains the track's occurrences in Deezer Playlists |
+| in_deezer_charts      |Contains the track's occurrences in Deezer Charts   |
+| in_shazam_charts      | Contains the track's occurrences in Shazam Charts   |
+| bpm                   | Contains the track's beats per minute |
+| key                   | Contains the key of a song|
+| mode                  | Contains the mode of a song          |
+| danceability_%        | Contains the danceability of a song      |
+| valence_%             | Contains the valence of a song          |
+| energy_%              | Contains how much energy a song has         |
+| acousticness_%        | Contains how much acoustics a song has    |
+| instrumentalness_%    | Contains the key of a song  |
+| liveness_%            | Contains how much live recording a song has          |
+
 
 ---
 
