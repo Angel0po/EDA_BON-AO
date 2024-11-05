@@ -101,12 +101,16 @@ This dataset contains a comprehensive list of the most famous songs of 2023 as l
 ### 5. Data Exploration
 
 #### Loading the Data
-Outline the steps taken to load the dataset, including file path or access method.
-
-
+```python 
+df_spotify = pd.read_csv('spotify-2023.csv', encoding='ISO-8859-1')
+```
+This line code loads the dataset and stores it into a data frame named "df_spotify". The read_csv is used to read csv files as a dataframe
 
 #### Initial Observations
-- Summarize basic observations from loading the data, such as:
+For initial observation, this line of code was used:
+```python
+df_spotify.info()
+```
   - Shape of the dataset (number of rows and columns)
   - Data types of each column
   - Presence of any missing values
