@@ -84,9 +84,13 @@ This dataset contains a comprehensive list of the most famous songs of 2023 as l
 
 - **Requirements**
   Install the following Python libraries:
+  
      `pandas`: For data manipulation and analysis.
+  
      `matplotlib`: For data visualization.
+  
      `seaborn`: For statistical data visualization.
+  
      `numpy`: For numerical operations.
   
 - **Environment**:
