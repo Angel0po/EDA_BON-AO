@@ -101,7 +101,9 @@ This dataset contains a comprehensive list of the most famous songs of 2023 as l
 ### 5. Data Exploration
 
 #### Loading the Data
-- Outline the steps taken to load the dataset, including file path or access method.
+Outline the steps taken to load the dataset, including file path or access method.
+
+
 
 #### Initial Observations
 - Summarize basic observations from loading the data, such as:
