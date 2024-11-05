@@ -71,21 +71,30 @@ This dataset contains a comprehensive list of the most famous songs of 2023 as l
 | instrumentalness_%    | Contains the key of a song  |
 | liveness_%            | Contains how much live recording a song has          |
 
-
 ---
 
-### 3. Project Goals
-State the main objectives of this analysis. For example:
-- Gain insights into streaming patterns and track popularity.
-- Explore relationships between musical characteristics and streaming counts.
+### 3. Task Goals
+- Practice cleaning data/ data preparation
+- Analyze and visualize the cleaned data
+- Explore relationships and gain insights from the different attributes of the dataset
 
 ---
 
 ### 4. Installation and Setup
-Provide instructions on setting up the environment to run the analysis:
-- **Requirements**: List the libraries and packages needed (e.g., Pandas, Matplotlib).
-- **Environment**: Specify the Python version and any dependencies.
-- **How to Run**: Include instructions to run the notebook or code.
+
+- **Requirements**
+  Install the following Python libraries:
+     `pandas`: For data manipulation and analysis.
+     `matplotlib`: For data visualization.
+     `seaborn`: For statistical data visualization.
+     `numpy`: For numerical operations.
+  
+- **Environment**:
+  This notebook was developed using Python 3.x.
+  
+- **How to Run**:
+  Open the notebook in Jupyter Notebook or Jupyter Lab. If you don’t have Jupyter installed, you can install it with: `pip install jupyter`
+  After the notebook opens, execute each cell sequentially to run the analysis.
 
 ---
 
