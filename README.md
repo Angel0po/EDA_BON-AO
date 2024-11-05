@@ -33,12 +33,29 @@
 ### 1. Project Overview
 Briefly describe the purpose and motivation of this EDA project. Explain why this dataset is interesting or important to analyze.
 
+This exploratory data analysis practices one's ability to code, clean data, visualize data, & data analysis. We are tasked to do the exploratory data analysis on the most streamed songs of Spotify 2023, which had source data anomalies, including wrong datatypes, missing values, and duplicated values. This is the reason why this dataset is suitable for data analysis, as it hones one's skill in various areas when executing the EDA.
+
 ---
 
 ### 2. Dataset Description
-- **Source**: Describe the origin of the dataset (include link if available).
-- **Description**: Provide a short description of the dataset and its context.
-- **Features**: List each column, including its name, data type, and a brief description of its contents.
+- **Source**: The origin of the dataset comes from Kaggle, a famous data science competition platform, and online community for data scientists and machine learning practitioners under Google LLC.
+  https://www.kaggle.com/dsv/6367938
+  
+- **Description**: This dataset contains a comprehensive list of the most famous songs of 2023 as listed on Spotify. The dataset offers a wealth of features beyond what is typically available in similar datasets. It provides insights into each song's attributes, popularity, and presence on various music platforms (Elgiriyewithana, 2023).
+- 
+- **Features**: The dataset includes information such as
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+- List each column, including its name, data type, and a brief description of its contents.
 
 ---
 
