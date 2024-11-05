@@ -111,6 +111,9 @@ For initial observation, this line of code was used:
 ```python
 df_spotify.info()
 ```
+It gets the basic information of dataset including its size, attributes, and data type per attribute. The output looks like this:
+![image](https://github.com/user-attachments/assets/423cc02b-2a56-4382-a179-8d0d1538fb64)
+
   - Shape of the dataset (number of rows and columns)
   - Data types of each column
   - Presence of any missing values
