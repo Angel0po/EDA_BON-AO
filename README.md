@@ -115,13 +115,47 @@ For initial observation, this line of code was used:
 ```python
 df_spotify.info()
 ```
-It gets the basic information of dataset including its size, attributes, and data type per attribute. The output looks like this:
+It gets the basic information of the dataset, including its size, attributes, and data type per attribute. The output looks like this:
 ![image](https://github.com/user-attachments/assets/423cc02b-2a56-4382-a179-8d0d1538fb64)
 
-  - Shape of the dataset (number of rows and columns)
-  - Data types of each column
-  - Presence of any missing values
- 
+From here, we can see that:
+
+   The dataset has 953 rows and 24 columns
+
+   All the datatypes of each column is either a 64-bit integer or an object. It's obvious from the getgo that `streams`, `in_deezer_playlists`, and          `in_shazam_charts` are incorrectly detected as an object datatype instead of a float or an integer.
+
+- Check for duplicated values
+
+  To check for duplicated values, the block of code was used below:
+  
+  ```python
+  duplicate_tracks = pd.DataFrame(df_spotify[df_spotify.duplicated(['track_name','artist(s)_name'])])
+   # checks duplicated tracks
+
+   print("The duplicate tracks that is in the dataset are ")
+   print()
+   print(duplicate_tracks[['track_name','artist(s)_name']])
+  ```
+
+   The code above stores a data frame of the duplicates in the original dataset and outputs all the duplicated tracks shown below:
+
+  ![image](https://github.com/user-attachments/assets/11f6c23e-2823-472c-aa33-e9c47b769fe3)
+
+   The duplicated values that are only checked are the title of the song since the other statistics would vary due to source data anomalies. It also only lists the second instance of the duplicated values, it will be delved deeper into later which is the right instance to be kept.
+
+- Check for missing values
+
+  To check for missing values, the block of code was used below:
+
+  ```python
+  missing_values = df_spotify.isna().sum()
+
+   print("The attributes that have missing values in the dataset are ")
+   print()
+   print(missing_values[missing_values>0])
+  ```
+
+  The code above stores the number of times there are missing values
 ---
 
 ### 6. Data Cleaning
