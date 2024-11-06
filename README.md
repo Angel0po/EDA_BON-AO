@@ -185,18 +185,12 @@ To drop the wrong instance, which is indexed at 482, the code is used below:
 
 ``` python
 df_spotify.drop(index=482, inplace=True)
-df_spotify.loc[(df_spotify['track_name']=='SPIT IN MY FACE!')]
 ```
 
 Output
 
-![image](https://github.com/user-attachments/assets/e20b2aa0-b0dd-4898-9026-f35338f623cb)
-
-![image](https://github.com/user-attachments/assets/55fa7ad4-9e98-4db6-a4ec-360f9f055a59)
-
-   The first line of code drops the wrong instance, indexed at 482, and inplace=True makes it so that it drops the row in the original dataset as well. The second line of code would check the remaining instance to see if it was removed or not. 
+   The first line of code drops the wrong instance, indexed at 482, and inplace=True makes it so that it drops the row in the original dataset as well.
    
-
    Repeating the same process for the rest of the duplicates, we have
 
    The 2nd song is "Take My Breath" by The Weeknd
@@ -217,13 +211,45 @@ df_spotify.drop(index=512, inplace=True)
 df_spotify.loc[(df_spotify['track_name']=='Take My Breath')]
 ```
 
-   The 3rd song is "About Damn Time" 
+   The 3rd song is "About Damn Time" by Lizzo 
 
    ``` python
 df_spotify.loc[(df_spotify['track_name']=='About Damn Time')]
 ```
 
 Output
+
+![image](https://github.com/user-attachments/assets/f30fa356-03d5-4417-a71d-e2f63bf37ee9)
+
+![image](https://github.com/user-attachments/assets/9f217ea9-6fc5-4b91-b668-6bfb6d089261)
+
+ Upon further research, the correct release date for the song is April 14th, 2022, according to Wikipedia, 2024. Fortunately, the correct instance also has a higher stream count, indicating that it is the most recent log of data for the track. We should, therefore, drop the instance indexed at 372.
+
+ ```python
+df_spotify.drop(index=372, inplace=True)
+```
+
+   The 4th song is "SNAP" by Rosa Linn
+
+   ``` python
+df_spotify.loc[(df_spotify['track_name']=='SNAP')]
+```
+
+Output
+
+![image](https://github.com/user-attachments/assets/7f90e1ba-010f-4376-9a9d-50e0b5ae474f)
+
+![image](https://github.com/user-attachments/assets/db01afe4-615e-4e58-aff6-7e8488ff3d5d)
+
+Since there is a negligible difference between the two, we should keep the instance with the greater count of streams. Therefore, we should drop the instance indexed at 873.
+
+``` python
+df_spotify.drop(index=873, inplace=True)
+```
+
+
+
+
 
 
 
