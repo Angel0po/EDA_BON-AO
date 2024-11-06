@@ -175,7 +175,13 @@ df_spotify.loc[(df_spotify['track_name']=='SPIT IN MY FACE!')]
 
    Uses .loc to locate a specific value of a specific attribute of a dataset, the outputted side-by-side info looks like this
 
-   Index | track_name | artist(s)_name | artist_count | released_year | released_month | released_day | in_spotify_playlists | in_spotify_charts | streams | in_apple_playlists | |-------|------------------|----------------|--------------|---------------|----------------|--------------|----------------------|-------------------|--------------|--------------------| | 0 | SPIT IN MY FACE! | ThxSoMch | 1 | 2022 | 10 | 31 | 629 | 14 | 303216294.0 | 32 | | 1 | SPIT IN MY FACE! | ThxSoMch | 1 | 2022 | 10 | 31 | 573 | 0 | 301869854.0 | 1 | 
+  ![image](https://github.com/user-attachments/assets/0b8f4be5-a150-4223-9a79-9a25f2f25499)
+
+  ![image](https://github.com/user-attachments/assets/f4baaafa-c029-41b7-a77d-1652b8935d52)
+
+  Upon inspection, their key and beats per minute do not match as well as other values. Upon researching, the correct key and bpm for this song
+
+
 
   
 
