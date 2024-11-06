@@ -2,7 +2,7 @@
 # Project Title: Exploratory Data Analysis of [Dataset Name]
 
 ## Table of Contents
-* [EDA Overview](#EDA-overview)
+* [EDA Overview](#eda-overview)
 * [Dataset Description](#dataset-description)
 * [Task Goals](#task-goals)
 * [Installation and Setup](#installation-and-setup)
@@ -165,13 +165,17 @@ From here, we can see that:
 ### 6. Data Cleaning/Preparation
 
 #### Handling Duplicate Values
-   - I handled the duplicated values by comparing the info of both instances side by side to check what has the right data and to keep it, and to drop the one instance that has the wrong data.
+   - I handled the duplicated values by comparing the info of both instances side by side to check what has the correct data and to keep it, and to drop the one instance that has the wrong data.
 
      For the first song which is "SPIT IN MY FACE!" by ThxSoMch
 
   ``` python
 df_spotify.loc[(df_spotify['track_name']=='SPIT IN MY FACE!')]
 ```
+
+   Uses .loc to locate a specific value of a specific attribute of a dataset, the outputted side-by-side info looks like this
+
+   Index | track_name | artist(s)_name | artist_count | released_year | released_month | released_day | in_spotify_playlists | in_spotify_charts | streams | in_apple_playlists | |-------|------------------|----------------|--------------|---------------|----------------|--------------|----------------------|-------------------|--------------|--------------------| | 0 | SPIT IN MY FACE! | ThxSoMch | 1 | 2022 | 10 | 31 | 629 | 14 | 303216294.0 | 32 | | 1 | SPIT IN MY FACE! | ThxSoMch | 1 | 2022 | 10 | 31 | 573 | 0 | 301869854.0 | 1 | 
 
   
 
