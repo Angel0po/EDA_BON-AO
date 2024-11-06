@@ -179,7 +179,67 @@ df_spotify.loc[(df_spotify['track_name']=='SPIT IN MY FACE!')]
 
   ![image](https://github.com/user-attachments/assets/f4baaafa-c029-41b7-a77d-1652b8935d52)
 
-  Upon inspection, their key and beats per minute do not match as well as other values. Upon researching, the correct key and bpm for this song
+  Upon inspection, their key and beats per minute do not match the other values. Upon research, the correct bpm for this song is 94, according to (Gateway, 2024), and it is also closer to the other musical attributes from the same source. Fortunately, it also includes the higher number of recorded song statistics between the two indicating that this is the latest data log of the track.
+
+To drop the wrong instance, which is indexed at 482, the code is used below:
+
+``` python
+df_spotify.drop(index=482, inplace=True)
+df_spotify.loc[(df_spotify['track_name']=='SPIT IN MY FACE!')]
+```
+
+Output
+
+![image](https://github.com/user-attachments/assets/e20b2aa0-b0dd-4898-9026-f35338f623cb)
+
+![image](https://github.com/user-attachments/assets/55fa7ad4-9e98-4db6-a4ec-360f9f055a59)
+
+   The first line of code drops the wrong instance, indexed at 482, and inplace=True makes it so that it drops the row in the original dataset as well. The second line of code would check the remaining instance to see if it was removed or not. 
+   
+
+   Repeating the same process for the rest of the duplicates, we have
+
+   The 2nd song is "Take My Breath" by The Weeknd
+   
+   ``` python
+df_spotify.loc[(df_spotify['track_name']=='Take My Breath')]
+```
+   Output
+
+   ![image](https://github.com/user-attachments/assets/77ee430b-6075-46d3-9122-f1a8df445db3)
+
+   ![image](https://github.com/user-attachments/assets/850830f4-c364-41f4-b134-30b5009a6c49)
+
+   Upon further research, the correct key for the song is A flat major, according to Gateway, 2024b, and its enharmonic equivalent is G sharp major, according to North Coast Synthesis Ltd., 2024). Fortunately, the correct instance also has a higher stream count, indicating that it is the most recent log of data for the track. We should, therefore, drop the instance indexed at 512.
+
+   ``` python
+df_spotify.drop(index=512, inplace=True)
+df_spotify.loc[(df_spotify['track_name']=='Take My Breath')]
+```
+
+   The 3rd song is "About Damn Time" 
+
+   ``` python
+df_spotify.loc[(df_spotify['track_name']=='About Damn Time')]
+```
+
+Output
+
+
+
+
+   
+
+   
+
+
+
+
+
+
+
+
+   
 
 
 
