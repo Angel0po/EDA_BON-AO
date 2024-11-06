@@ -2,11 +2,11 @@
 # Project Title: Exploratory Data Analysis of [Dataset Name]
 
 ## Table of Contents
-* [1. EDA Overview](#1.-eda-overview)
-* [2. Dataset Description](#2.-dataset-description)
-* [3. Task Goals](#3.-task-goals)
-* [4. Installation and Setup](#4.-installation-and-setup)
-* [5. Data Exploration](#5.-data-exploration)
+* [1. EDA Overview](#1-eda-overview)
+* [2. Dataset Description](#2-dataset-description)
+* [3. Task Goals](#3-task-goals)
+* [4. Installation and Setup](#4-installation-and-setup)
+* [5. Data Exploration](#5-data-exploration)
    - [Loading the Data](#loading-the-data)
    - [Initial Observations](#initial-observations)
 * [Data Cleaning](#data-cleaning)
