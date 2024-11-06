@@ -137,7 +137,7 @@ From here, we can see that:
    print(duplicate_tracks[['track_name','artist(s)_name']])
   ```
 
-   The code above stores a data frame of the duplicates in the original dataset and outputs all the duplicated tracks shown below:
+   The code above stores the duplicates in the original dataset in a new data frame and outputs all the duplicated tracks shown below:
 
   ![image](https://github.com/user-attachments/assets/11f6c23e-2823-472c-aa33-e9c47b769fe3)
 
@@ -155,16 +155,34 @@ From here, we can see that:
    print(missing_values[missing_values>0])
   ```
 
-  The code above stores the number of times there are missing values
+  The code above stores the number of times there are missing values in each column of the dataset, and it outputs the image below:
+  
+  ![image](https://github.com/user-attachments/assets/6b58c84b-6930-4efc-9c3c-e1990b1d1d6b)
+
+  Here, we can see that there are 50 missing values in the attribute of `in_shazam_charts`, and 94 in the `key` attribute. This is also due to source data anomalies, and dealing with it will be discussed later in the next part, which is data preparation/cleaning.
+  
 ---
 
-### 6. Data Cleaning
+### 6. Data Cleaning/Preparation
 
-#### Missing Values
-- Describe any columns with missing values and how you handled them.
+#### Handling Duplicate Values
+   - I handled the duplicated values by comparing the info of both instances side by side to check what has the right data and to keep it, and to drop the one instance that has the wrong data.
 
-#### Duplicates
-- Check for duplicate rows and explain how you addressed them.
+     For the first song which is "SPIT IN MY FACE!" by ThxSoMch
+
+  ``` python
+df_spotify.loc[(df_spotify['track_name']=='SPIT IN MY FACE!')]
+```
+
+  
+
+
+  
+
+#### Handling Missing Values 
+   #### For Missing Keys
+   
+   - I handled missing values in the key attribute by filling them with a placeholder. I did not drop them from the dataset as they aren't close to 50% missing of the entire population. By replacing the missing keys with a placeholder, valid data is retained, and it can be rejected for later consideration for data analysis related to the key attribute. An easily implemented imputation method cannot be applied here since it is a categorical value.
 
 ---
 
