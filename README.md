@@ -841,6 +841,8 @@ df_spotify.drop(index=873, inplace=True)
 
  To perform advanced analysis, we tasked to find the number of tracks per key in order to see if there is trend or a pattern. Let us first group the number of tracks by their labeled keys, and then plot them into a bar plot and a pie chart for visualization and analysis.
 
+ We should also study the performance of the artists across all platform statistics.
+
  ```python
    df_key_counts = pd.DataFrame(df_spotify.groupby("key").size())
    # groups track by their key
@@ -1108,6 +1110,177 @@ df_spotify.drop(index=873, inplace=True)
    ![image](https://github.com/user-attachments/assets/2da7d964-8d06-4ce5-adf9-149277ba63d8)
 
    It would seem that people still listen to tracks that has the major mode on average but the difference between the two did get smaller.
+
+   For the next part we should analyze the performance of the artists across the playlists and charts across all the platforms
+
+   First, we should group the track by artists and playlist counts, then graph both the top 5 across each playlist count, and then the total count of playlist count. To implement this, the lines of code was used below with their corresponding output
+
+   ```python
+   platform_playlists = ['in_spotify_playlists','in_apple_playlists','in_deezer_playlists']
+   # groups all playlists attribute
+
+   df_artist_playlists = df_spotify.groupby('artist_name').sum(platform_playlists)
+   # groups by artists and adds all their occurances in the different platform pllaylists
+
+   df_artist_playlists = df_artist_playlists.sort_values(platform_playlists, ascending=False).reset_index()
+   # orders occurances in the diff platform playlists from greatest to least
+   ```
+
+   The code above groups and sorts the artists by their playlist counts. The next part plots the top 5 in each playlist count per artists.
+
+   ```python
+   fig, axes = plt.subplots(ncols=3, figsize=(20, 6))
+   # Sets to plot 3 graphs at once
+
+   sns.barplot(df_artist_playlists.head().sort_values('in_spotify_playlists'), x = 'artist_name', y = 'in_spotify_playlists', palette='Set2', ax=axes[0])
+   # also orders from greatest to least and only plots the top 5 artists
+   # also sets the title for the plot
+
+   axes[0].set(title='Artist vs. Occurance in Spotify Playlists Barplot')
+   axes[0].set_xlabel('Top Occuring Artists')
+   axes[0].set_ylabel("Number of Occurance in Spotify Playlists")
+   # Labels the plot's title, x-title, and y-title
+
+   sns.barplot(df_artist_playlists.head().sort_values('in_apple_playlists'), x = 'artist_name', y = 'in_apple_playlists', palette='Set2',             ax=axes[1]).set(title='Artist vs. Occurance in Apple Music Playlists Barplot')
+   # plots the artist count vs. occurence in Apple Music playlists barplot and colors it
+   # also orders from greatest to least and only plots the top 5 artists
+   # also sets the title for the plot
+
+   axes[1].set(title='Artist vs. Occurance in Apple Music Playlists Barplot')
+   axes[1].set_xlabel('Top Occuring Artists')
+   axes[1].set_ylabel("Number of Occurance in Apple Music Playlists")
+   # Labels the plot's title, x-title, and y-title
+
+   sns.barplot(df_artist_playlists.head().sort_values('in_deezer_playlists'), x = 'artist_name', y = 'in_deezer_playlists', palette='Set2',          ax=axes[2]).set(title='Artist vs. Occurance in Deezer Playlists Barplot')
+   # plots the artist count vs. occurrence in deezer playlists barplot and colors it
+   # also orders from greatest to least and only plots the top 5 artists
+   # also sets the title for the plot
+
+   axes[2].set(title='Artist vs. Occurance in Deezer Playlists Barplot')
+   axes[2].set_xlabel('Top Occuring Artists')
+   axes[2].set_ylabel("Number of Occurance in Deezer Playlists")
+   # Labels the plot's title, x-title, and y-title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/762e43d4-375b-40b0-8384-a0efdd09ced3)
+
+   The most consistent artists in the different platform playlist are:
+   
+   The Weeknd: Top 1 in Spotify, Top 1 in Apple Music, and Top 3 in Deezer
+   
+   Eminem: Top 2 in Spotify, Top 5 in Apple Music, and Top 1 in Deezer
+
+   For the total playlist count across all platforms per artist
+
+   ```python
+   df_artist_playlists['total_playlists'] = df_artist_playlists['in_spotify_playlists'] + df_artist_playlists['in_apple_playlists'] +       df_artist_playlists['in_deezer_playlists']
+   # calculates and stores total playlist count
+
+   df_total_playlists = df_artist_playlists[['artist_name','total_playlists']].sort_values('total_playlists', ascending=False)
+   # sorts from greatest to least total playlist count
+
+   df_total_playlists.reset_index(drop=True, inplace=True)
+   # resets index
+   ```
+
+   For plotting the bar plot for the total playlists count per artist
+
+   ```python
+
+   plt.figure(figsize=(14, 8))
+   # sizes the plot
+
+   sns.barplot(df_total_playlists.head(10), x = 'artist_name', y = 'total_playlists', palette ='Set2')
+   # creates artists vs  total playlists barplot
+
+   plt.title("Artists vs. Total Playlists Across All Platforms Occurrence Barplot")
+   plt.xlabel("Artists")
+   plt.ylabel("Total Playlist Count")
+   # Labels the plot's title, x-title, and y-title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/93e42ff8-fd23-4aa4-8f33-0f9ce35c7a1d)
+
+   It would seem that the top 5 occuring artists in each platforms playlist count is also the same top 5 occuring artists in total playlist counts
+
+   For the next part, we should now check the performance of the artists of the charts of each platform and also across all platforms. The same process for the artist's playlist statistics is repeated for this one
+
+   First, we should group the artists based on their playlist counts from greatest to least across different platforms, and then graph them in a barplot
+
+   ```python
+   platform_charts = ['in_spotify_charts','in_apple_charts','in_deezer_charts','in_shazam_charts']
+
+   df_artist_charts = df_spotify.groupby('artist_name').sum(platform_charts)
+   # groups by artists and adds all their occurances in the different platform pllaylists
+
+   df_artist_charts = df_artist_charts.sort_values(platform_charts, ascending=False).reset_index()
+   # orders occurances in the diff platform playlists from greatest to least
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/6de902c3-26f6-4cef-8e48-0270a1872643)
+
+   The top artists that are consistently in charts of different platforms are:
+   
+   Bad Bunny: Top 1 in Spotify, Top 2 in Apple Music, Top 1 in Deezer, and Top 4 in Shazam
+   
+   The Weeknd: Top 2 in Spotify, Top 1 in Apple Music, Top 4 in Deezer, and Top 1 in Shazam
+   
+   Taylor Swift: Top 3 in Spotify, Top 3 in Apple Music, Top 5 in Deezer, and Top 2 in Shazam
+
+   For the total chart counts per artist, the code was used below
+
+   ```python
+   df_artist_charts['total_charts'] = df_artist_charts['in_spotify_charts'] + df_artist_charts['in_apple_charts'] + df_artist_charts['in_deezer_charts'] +    df_artist_charts['in_shazam_charts']
+   # calculates and stores total chart counts
+
+   df_total_charts = df_artist_charts[['artist_name','total_charts']].sort_values('total_charts', ascending=False)
+   # sorts greatest to least total chart count
+
+   df_total_charts.reset_index(drop=True, inplace=True)
+   # resets the index
+   ```
+
+   To graph the artist count and their total chart counts, the code was used below with it's corresponding output
+
+   ```python
+   plt.figure(figsize=(14, 8))
+   # sizes the plot
+
+   sns.barplot(df_total_charts.head(10), x = 'artist_name', y = 'total_charts', palette ='Set2')
+   # plots artists vs total chart count barplot
+
+   plt.title("Artists vs. Total Chart Occurrence Across All Platforms Barplot")
+   plt.xlabel("Artists")
+   plt.ylabel("Total Chart Count")
+   # Labels the plot's title, x-title, and y-title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/cede6479-637a-4fb5-ac63-e8ac2922c460)
+
+   The Weeknd tops out both the total playlists and charts count, along with him that appears in both top 5 of the two categories are
+Bad bunny, Taylor Swift, and Peso Pluma.
+
+   It would seem that the occurrences of artists in playlists are more consistent than the their occurences in charts. Feid, who appeared in all of the top 5 chart counts across different platforms yet did not make the top 5 of the total char counts.
+
+   Meanwhile all of the top 5 artists in chart counts across different platforms were also the same artists in top 5 among total chart counts.
+
+
+   
+
+   
+
+
+   
+
+
 
    
 
