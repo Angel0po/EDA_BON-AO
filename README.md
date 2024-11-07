@@ -164,10 +164,27 @@ From here, we can see that:
 
 ### 6. Data Cleaning/Preparation
 
+#### Handling wrong datatypes
+
+   - For fixing the data type of each attribute, each one had a unique process that it had to go through.
+
+     To fix the data type of the streams attribute, the line of code was used below
+
+     ``` python
+     df_spotify['streams'] = pd.to_numeric(df_spotify['streams'], errors = 'coerce')
+     ```
+
+     The line of code above uses pd.to_numeric to turn all the values inside the inputted column into a numerical variable, the error = 'coerce' part was needed after an error was popping up that it could not convert a single value indexed at 574 to be turn into a numerical value. It would seem that it contains the other track's information of the other attributes as can be seen below
+
+     ``` python
+     
+
+     
+
 #### Handling Duplicate Values
    - I handled the duplicated values by comparing the info of both instances side by side to check what has the correct data and to keep it, and to drop the one instance that has the wrong data.
 
-     For the first song which is "SPIT IN MY FACE!" by ThxSoMch
+   For the first song which is "SPIT IN MY FACE!" by ThxSoMch
 
   ``` python
 df_spotify.loc[(df_spotify['track_name']=='SPIT IN MY FACE!')]
@@ -295,7 +312,9 @@ df_spotify.drop(index=873, inplace=True)
 ### 7. Analysis
 
 #### Overview of Dataset
-- Describe the dataset structure and general information.
+- The dataset originally had 953 rows, but after dealing with the duplicates, it became 949 rows, with same amount of columns.
+
+  The data types of the dataset were either a 64-bit integer or an object. Furthermore, inspecting the data types, it would seem that the attributes of streams, in_deezer_playlists
 
 #### Basic Descriptive Statistics
 - Provide descriptive statistics such as mean, median, and standard deviation for relevant columns.
