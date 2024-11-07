@@ -761,36 +761,395 @@ df_spotify.drop(index=873, inplace=True)
    # sets the title of the pie chart
    ```
 
+   Output
+
+   ![image](https://github.com/user-attachments/assets/724a1fc1-effb-4cc5-85de-f0182ba0d348)
+
    It would seem that the more the track is in spotify playlists, the more it is streamed. The apple playlis does not seem to be much of an indicator of how much a track is streamed.
    
-Spotify playlists being the biggest indicator of the most streamed tracks makes sense as it is the more accessible, and customizable app for the masses
+   Spotify playlists being the biggest indicator of the most streamed tracks makes sense as it is the more accessible, and customizable app for the masses. It is also worth noting that 92% of the total playlist occurrence comes from Spotify Playlists
 
-Both Spotify and Deezer (in specific countries) is also not locked from any paywall and is free to use unlike Apple music.
+   Both Spotify and Deezer (in specific countries) is also not locked from any paywall and is free to use unlike Apple music.
 
-Let us dive deeper by comparing the different platform's statistics directly by their playlist counts and chart counts
+   Let us dive deeper by comparing the different platform's statistics directly by their playlist counts and chart counts, by using the same process
 
+   For the total count of playlists occurrences barplot
 
+   ```python
+   platform_charts = ['in_spotify_charts','in_apple_charts','in_deezer_charts','in_shazam_charts']
+   # Seperate the chart attributes
 
+   sns.barplot(df_spotify[platform_charts].sum(), palette='viridis')
+   # Creates barplot with the means of all platform charts and also colors it
 
+   plt.title("Total Platform Charts vs. Number of Tracks Barplot")
+   plt.xlabel("Platform Charts")
+   plt.ylabel("Number of Tracks")
+   # Labels the plot's title, x-axis, and y-axis
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/57023c45-5299-4578-984c-7d97e67551d2)
+
+   For the mean of playlists occurrences barplot
+
+   ```python
+   platform_charts = ['in_spotify_charts','in_apple_charts','in_deezer_charts','in_shazam_charts']
+   # Seperate the chart attributes
+
+   sns.barplot(df_spotify[platform_charts].mean(), palette='viridis')
+   # Creates barplot with the means of all platform charts and also colors it
+
+   plt.title("Mean of Platform Charts Barplot")
+   plt.xlabel("Platform Charts")
+   plt.ylabel("Mean Number of Occurrences")
+   # Labels the plot's title, x-axis, and y-axis
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/a2e3c178-7292-438d-8ef6-3d75eb5f259b)
+
+   For the total count of playlist occurrences pie chart
+
+   ```python
+   platform_charts = ['in_spotify_charts','in_apple_charts','in_deezer_charts','in_shazam_charts']
+
+   palette_color = sns.color_palette('pastel') 
+   # colors the pie chart
+
+   plt.figure(figsize=(12,12))
+   # resizes the pie chart
+
+   plt.pie(df_spotify[platform_charts].sum(), labels=platform_charts, colors=palette_color, autopct='%.0f%%') 
+   # creates the pie chart and labels each slice
+
+   plt.title("Chart Counts Pie Chart")
+   # sets the title of the pie chart
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/e9250f52-7cc2-4d05-b761-2df22504c932)
+
+   It would seem in the terms of charts across all platforms. The charts of Apple Music and Shazam seems to be the biggest indicator of the tracks being in the list of the most streamed Spotify songs of 2023. Oddly enough, this time Deezer and Spotify charts are not a big indicator in this facet. 
+
+   It is also worth noting that Apple Music and Deezer Charts account for 42% and 46% respectively of the number of total charts.
 
 #### Advanced Analysis
-- Perform any additional analysis, such as correlations or pattern analysis across keys or modes.
+
+ To perform advanced analysis, we tasked to find the number of tracks per key in order to see if there is trend or a pattern. Let us first group the number of tracks by their labeled keys, and then plot them into a bar plot and a pie chart for visualization and analysis.
+
+ ```python
+   df_key_counts = pd.DataFrame(df_spotify.groupby("key").size())
+   # groups track by their key
+
+   df_key_counts = df_key_counts.sort_values(by='key').reset_index()
+   # sorts the key alphabetically and resets the index
+
+   df_key_counts = df_key_counts.rename(columns={0: 'number_of_tracks'})
+   # renames second column as number of tracks
+
+   df_key_counts = df_key_counts[df_key_counts['key'] != 'Missing']
+   # Removes missing counts 
+
+   df_key_counts
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/e9d894fa-49ee-4701-a266-90b5d56b33c7)
+
+   For the barplot of key of tracks
+
+   ```python
+   sns.barplot(df_key_counts, x = 'key', y = 'number_of_tracks', palette='Set2')
+   # Creates barplot of key counts and colors it
+
+
+   plt.title("Key Count Barplot")
+   plt.xlabel("Keys")
+   plt.ylabel("Number of Tracks")
+   # Labels the plot's title, x-title, y-title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/f2a666dd-1cc3-4241-bce3-4bd4f2dd5a83)
+
+   For the pie chart of key of tracks
+
+   ```python
+   number_of_tracks = df_key_counts['number_of_tracks']
+   # stores tack count in a seperate variable
+
+   keys = df_key_counts['key']
+   # stores keys in a seperate variable
+
+
+   colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0', '#ffb3e6', '#c4e17f', '#76d7c4', '#f7b7a3', '#d4a5a5', '#a3c4f7']
+
+   plt.figure(figsize=(14,14))
+   # resizes the pie chart
+
+   plt.pie(number_of_tracks, labels=keys, colors=colors, autopct='%.0f%%') 
+   # creates the pie chart and labels each slice
+
+   plt.title("Key Counts Pie Chart")
+   # sets the title of the pie chart
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/ad75ebaf-b301-46ec-97fd-95bf1d5ed37b)
+
+   It would seem that the C sharp key has the most tracks, at exactly 119 tracks and being 14% of the whole population. The runner-up would be G and G sharp at 96 and 91 tracks respectively and both having 11% of the whole population.
+
+   For comparing the keys vs. streams, we can both have the total stream per key and the mean stream per key. As well as a pie chart to visualize and analyze if there is any correlation between the two.
+
+   For the bar chart of the total count of streams per key
+
+   ```python
+   sns.barplot(df_key_streams, x = 'key', y = 'streams', palette='Set2')
+   # Creates barplot with keys vs. total streams
+
+   plt.title("Keys vs. Total Streams Barplot")
+   plt.xlabel("Keys")
+   plt.ylabel("Streams by One Hundred Billion")
+   # Labels title, x-title, and y-title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/e893982b-9948-4098-a723-82d07e36bf5c)
+
+   For the bar chart of the mean stream per key
+
+   ```python
+   df_key_streams['mean_streams'] = df_key_streams['streams']/df_key_counts['number_of_tracks']
+   # adds the mean of streams to the same dataframe
+
+   sns.barplot(df_key_streams, x = 'key', y = 'mean_streams', palette = 'Set2')
+
+   plt.title("Keys vs. Stream Mean Barplot")
+   plt.xlabel("Keys")
+   plt.ylabel("Stream Mean by Hundred Millions")
+   # Labels the plot's title, x-title, and y-title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/ec8a2e54-0911-4f13-ae4a-5b093190e78f)
+
+   For the pie chart of the total streams per key 
+
+   ```python
+   number_of_streams = df_key_streams['streams']
+   # stores the number of streams in a seperate variable
+
+   keys = df_key_counts['key']
+   # stores the keys in a seperate variable
+
+   colors = ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0', '#ffb3e6', '#c4e17f', '#76d7c4', '#f7b7a3', '#d4a5a5', '#a3c4f7']
+
+   plt.figure(figsize=(14,14))
+   # resizes the pie chart
+
+   plt.pie(number_of_streams, labels=keys, colors=colors, autopct='%.0f%%') 
+   # creates the pie chart and labels each slice
+
+   plt.title("Key Streams Pie Chart")
+   # sets the title of the pie chart
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/2855bf3e-b235-4662-a41c-90493b155dd3)
+
+   It would seem that the C sharp is top one of the total stream count and accounts for 16% of the number of total streams. This may also due to the fact that it also has the most tracks between the keys.
+
+   When comparing their mean of streams, the top one becomes the D key followed by the E key and C sharp. Which shows that even if the D key has less tracks, on average, its being listened to more than the others.
+
+   For the mode analysis, we should group the tracks by mode and then order it by streams. Then we should compare their total track count, total stream count, and stream mean. All of these is plotted in a bar plot with the total counts also having pie charts. The following are implemented below with their corresponding output
+
+   For the grouping the tracks by mode
+
+   ```python
+   df_mode_counts = pd.DataFrame(df_spotify.groupby("mode").size())
+   # groups track by their mode
+
+   df_mode_counts = df_mode_counts.sort_values(by='mode').reset_index()
+   # sorts the key alphabetically and resets the index
+
+   df_mode_counts = df_mode_counts.rename(columns={0: 'number_of_tracks'})
+   # renames second column as number of tracks
+
+   df_mode_counts
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/6162a615-5cee-46f7-8d67-ccb413e2dd5b)
+
+   For the barplot of the total number of tracks per mode
+
+   ```python
+   sns.barplot(df_mode_counts, x = 'mode', y = 'number_of_tracks', palette='Set2')
+   # Creates mode vs. number of tracks barplot and colors it
+
+   plt.title("Mode vs. Total Tracks Barplot")
+   plt.xlabel("Mode")
+   plt.ylabel("Number of Tracks")
+   # Labels the plot's title, x-title, and y-title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/42cc6a78-2407-44b0-8874-a4ef74c9ab21)
+
+   For the piechart of the total track count per mode
+
+   ```python
+   number_of_tracks_mode = df_mode_counts['number_of_tracks']
+   # stores the number of tracks in a seperate variable
+
+   modes = df_mode_counts['mode']
+   # stores the keys in a seperate variable
+
+   colors = ['#ff9999', '#66b3ff']
+
+   plt.figure(figsize=(6,6))
+   # resizes the pie chart
+
+   plt.pie(number_of_tracks_mode, labels=modes, colors=colors, autopct='%.0f%%') 
+   # creates the pie chart and labels each slice
+
+   plt.title("Mode Tracks Pie Chart")
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/d9a168f0-d367-44d6-b1e2-5c1a1c2600da)
+
+   It would seem that the major mode has 548 tracks and accounts for more than half of the total tracks. 
+
+   For the analyzing the relationship of the mode and streams, we should first group them by mode and streams
+
+   ```python
+   df_mode_stream = df_spotify[['mode', 'streams']].groupby('mode').sum('streams')
+   # creates a seperate dataframe where in the total streams are grouped by mode
+
+   df_mode_stream = df_mode_stream.sort_values(by='streams', ascending=False).reset_index()
+   # sorts the stream value by greatest to least
+
+   df_mode_stream
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/7936bf4b-b400-4ea5-a32b-1fd701ae6d85)
+
+   Next step is plotting the barplot of total streams per mode
+
+   ```python
+   sns.barplot(df_mode_stream, x = 'mode', y = 'streams', palette = 'Set2')
+
+   plt.title("Mode vs. Total Streams Barplot")
+   plt.xlabel("Mode")
+   plt.ylabel("Streams by Hundred Billions")
+   # Labels the plot's title, x-title, and y-title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/60aa949d-3f0f-4bef-82cb-2c9f1e1f361d)
+
+   Now for the piechart to see the division of the population
+
+   ```python
+   number_of_streams_mode = df_mode_stream['streams']
+   # stores the number of tracks in a seperate variable
+
+   modes = df_mode_counts['mode']
+   # stores the keys in a seperate variable
+
+   colors = ['#ff9999', '#66b3ff']
+
+   plt.figure(figsize=(6,6))
+   # resizes the pie chart
+
+   plt.pie(number_of_streams_mode, labels=modes, colors=colors, autopct='%.0f%%') 
+   # creates the pie chart and labels each slice
+
+   plt.title("Mode Streams Pie Chart")
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/7a9df076-c84f-4e66-9698-6de07b19c851)
+
+   It would seem that people listen to songs of the Major mode than the minor. This dominance maybe also due to the fact that there are more songs in major than in minor in the whole dataset. Let us dig deeper and see which mode is more listened to in average. We should first calculate the mean and then plot it to visualize their difference.
+
+   ```python
+   df_mode_stream['mean_streams'] = df_mode_stream.streams / df_mode_counts.number_of_tracks
+
+   sns.barplot(df_mode_stream, x = 'mode', y = 'mean_streams', palette = 'Set2')
+   # Creates mode vs. mean of streams barplot and colors it
+
+   plt.title("Mode vs. Stream Mean Barplot")
+   plt.xlabel("Mode")
+   plt.ylabel("Stream Mean by Hundred Millions")
+   # Labels the plot's title, x-title, and y-title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/2da7d964-8d06-4ce5-adf9-149277ba63d8)
+
+   It would seem that people still listen to tracks that has the major mode on average but the difference between the two did get smaller.
+
+   
+
+
+
+   
+
+
+
+   
+   
+
+   
+
+   
+
+
+
+
+
+
+
+
+ 
 
 ---
 
-### 8. Key Findings
+### 8. Key Takeaways
 Summarize the major insights gained from the analysis.
 
 ---
 
-### 9. Conclusion
+### 9. Final Words
 Provide a brief conclusion of the project findings.
 
 ---
 
-### 10. Faced Errors
+### 10. Key Errors
 
 ---
+
+### 11. New Learnings
 
 ### References
 List any references used for the analysis.
