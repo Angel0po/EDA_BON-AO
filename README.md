@@ -174,9 +174,10 @@ From here, we can see that:
      df_spotify['streams'] = pd.to_numeric(df_spotify['streams'], errors = 'coerce')
      ```
 
-     The line of code above uses pd.to_numeric to turn all the values inside the inputted column into a numerical variable, the error = 'coerce' part was needed after an error was popping up that it could not convert a single value indexed at 574 to be turn into a numerical value. It would seem that it contains the other track's information of the other attributes as can be seen below
+     The line of code above uses pd.to_numeric to turn all the values inside the inputted column into a numerical variable; the error = 'coerce' part was needed after an error popped up that it could not convert a single value indexed at 574 to be turned into a numerical value. It would seem that it contains the other track's information on the other attributes, as can be seen below.
 
      ``` python
+     
      
 
      
@@ -306,6 +307,8 @@ df_spotify.drop(index=873, inplace=True)
      ```python
      df_spotify['in_shazam_charts'].fillna(shazam_median, inplace=True)
      ```
+
+     The code above uses .fillna which replaces all missing values with an inputted value and inplace=True is used so it is edited in the original dataset
 
 ---
 
