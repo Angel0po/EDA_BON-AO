@@ -317,10 +317,23 @@ df_spotify.drop(index=873, inplace=True)
 #### Overview of Dataset
 - The dataset originally had 953 rows, but after dealing with the duplicates, it became 949 rows, with same amount of columns.
 
-  The data types of the dataset were either a 64-bit integer or an object. Furthermore, inspecting the data types, it would seem that the attributes of streams, in_deezer_playlists
+  The data types of the dataset were either a 64-bit integer or an object. Furthermore, inspecting the data types, it would seem that the attributes of streams, in_deezer_playlists, in_shazam_charts, were incorrectly detected as an object data type. Thankfully this was dealt with inpart of the data pre-processing/preparation.
+
+  At first, after handling all the duplicate tracks, there were missing values in the streams column, in_shazam_charts, key columns. The missing value in the streams column got replaced by a rough estimate.
+
+  All the rows that has a missing key were dropped. Lastly, the rest of missing values in the in_shazam_charts got replaced by the median of the column
 
 #### Basic Descriptive Statistics
-- Provide descriptive statistics such as mean, median, and standard deviation for relevant columns.
+- The total count, mean, meadian, and standard deviation of the streams attribute are as follows:
+
+  | Data              | Streams                       |
+|-----------------------|--------------------------------------|
+| Total            | 487818415565         |
+| Mean       | 514034157.60273975      |
+| Median        | 288101651.0       |
+| Standard Deviation        |567574041.7934494   |
+
+  
 
 #### Top Performers
 - Identify the tracks and artists with the highest streaming counts.
