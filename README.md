@@ -179,7 +179,7 @@ df_spotify.loc[(df_spotify['track_name']=='SPIT IN MY FACE!')]
 
   ![image](https://github.com/user-attachments/assets/f4baaafa-c029-41b7-a77d-1652b8935d52)
 
-  Upon inspection, their key and beats per minute do not match the other values. Upon research, the correct bpm for this song is 94, according to (Gateway, 2024), and it is also closer to the other musical attributes from the same source. Fortunately, it also includes the higher number of recorded song statistics between the two indicating that this is the latest data log of the track.
+  Upon inspection, their key and beats per minute do not match the other values. Upon research, the correct bpm for this song is 94, according to Gateway (2024), and it is also closer to the other musical attributes from the same source. Fortunately, it also includes the higher number of recorded song statistics between the two indicating that this is the latest data log of the track.
 
 To drop the wrong instance, which is indexed at 482, the code is used below:
 
@@ -187,9 +187,7 @@ To drop the wrong instance, which is indexed at 482, the code is used below:
 df_spotify.drop(index=482, inplace=True)
 ```
 
-Output
-
-   The first line of code drops the wrong instance, indexed at 482, and inplace=True makes it so that it drops the row in the original dataset as well.
+   This line of code drops the wrong instance, indexed at 482, and inplace=True makes it so that it drops the row in the original dataset as well.
    
    Repeating the same process for the rest of the duplicates, we have
 
@@ -204,7 +202,7 @@ df_spotify.loc[(df_spotify['track_name']=='Take My Breath')]
 
    ![image](https://github.com/user-attachments/assets/850830f4-c364-41f4-b134-30b5009a6c49)
 
-   Upon further research, the correct key for the song is A flat major, according to Gateway, 2024b, and its enharmonic equivalent is G sharp major, according to North Coast Synthesis Ltd., 2024). Fortunately, the correct instance also has a higher stream count, indicating that it is the most recent log of data for the track. We should, therefore, drop the instance indexed at 512.
+   Upon further research, the correct key for the song is A flat major, according to Gateway (2024b), and its enharmonic equivalent is G sharp major, according to North Coast Synthesis Ltd. (2024). Fortunately, the correct instance also has a higher stream count, indicating that it is the most recent log of data for the track. We should, therefore, drop the instance indexed at 512.
 
    ``` python
 df_spotify.drop(index=512, inplace=True)
@@ -223,7 +221,7 @@ Output
 
 ![image](https://github.com/user-attachments/assets/9f217ea9-6fc5-4b91-b668-6bfb6d089261)
 
- Upon further research, the correct release date for the song is April 14th, 2022, according to Wikipedia, 2024. Fortunately, the correct instance also has a higher stream count, indicating that it is the most recent log of data for the track. We should, therefore, drop the instance indexed at 372.
+ Upon further research, the correct release date for the song is April 14th, 2022, according to Wikipedia (2024). Fortunately, the correct instance also has a higher stream count, indicating that it is the most recent log of data for the track. We should, therefore, drop the instance indexed at 372.
 
  ```python
 df_spotify.drop(index=372, inplace=True)
@@ -241,43 +239,47 @@ Output
 
 ![image](https://github.com/user-attachments/assets/db01afe4-615e-4e58-aff6-7e8488ff3d5d)
 
-Since there is a negligible difference between the two, we should keep the instance with the greater count of streams. Therefore, we should drop the instance indexed at 873.
+Since the two have a negligible difference, we should keep the instance with the greater count of streams. Therefore, we should drop the instance indexed at 873.
 
 ``` python
 df_spotify.drop(index=873, inplace=True)
 ```
 
-
-
-
-
-
-
-
-   
-
-   
-
-
-
-
-
-
-
-
-   
-
-
-
-  
-
-
-  
-
 #### Handling Missing Values 
    #### For Missing Keys
    
-   - I handled missing values in the key attribute by filling them with a placeholder. I did not drop them from the dataset as they aren't close to 50% missing of the entire population. By replacing the missing keys with a placeholder, valid data is retained, and it can be rejected for later consideration for data analysis related to the key attribute. An easily implemented imputation method cannot be applied here since it is a categorical value.
+   - I handled missing values in the key attribute by filling them with a placeholder. I did not drop them from the dataset as they aren't close to 50% missing of the entire population. By replacing the missing keys with a placeholder, valid data is retained, and it can be rejected for later consideration for data analysis related to the key attribute. An easily implemented imputation method cannot be applied here since it is a categorical value. The line of code below is used to implement this
+
+     ``` python
+     df_spotify['key'].fillna('Missing', inplace=True)
+     ```
+
+     The line of code uses .fillna, which fills up all the missing values with the given input, and inplace=True makes it so that the edit is done to the original dataset and not a copy.
+
+     Checking the updated missing values using the code below;
+
+     ``` python
+     missing_values = df_spotify.isna().sum()
+     print("The updated missing values are now ")
+     print()
+     print(missing_values[missing_values>0])
+     ```
+
+     Output
+
+     ![image](https://github.com/user-attachments/assets/1d5f5996-f42f-4763-8cfe-740fcb7d6874)
+
+     There are now only 50 missing values in the Shazam chart attribute. For these missing values, I implemented an imputation method as it was a numerical variable, and according to Chandrikasai (2023), an imputation method can be used when the missing values in a column are less than 10% of the whole population which in this case is true. The imputation method that I chose was to fill in the missing values with the median of the attribute. I chose this imputation method as it assumes that the missing data is missing completely at random, according to Keita (2023), and almost all data analysis algorithms/software assumes that data are missing completely at random, according to The Data Story Guide (n.d.). Nevertheless, it should be noted that all imputation has a con and might distort results according to Subha (2024), but since it is less than 10% of the population and the value used to replace is a valid imputation method, I think it will have little to no effect to distort the results.
+
+     The code below is used to implement the imputation method
+
+     ``` python
+     
+
+     
+
+
+     
 
 ---
 
