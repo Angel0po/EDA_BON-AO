@@ -657,17 +657,121 @@ df_spotify.drop(index=873, inplace=True)
    ![image](https://github.com/user-attachments/assets/83041b19-6480-4e47-bd3b-75a830280af5)
 
    It would seem that all of the musical attributes has a very weak negative correlation as they all have values from -0.01 to -0.19
+   
    The musical attribute that has the least correlation to the number of streams is the bpm or beats per minute
+   
    The strongest weak negative correlation is both danceability and speechiness being both -0.11 respectively
+   
    The two seem to attributes seem to influence streams the most, although negatively
+   
    The danceability and energy attributes has a very weak positive correlation, it is exactly at 0.18
+   
    The valence and acousticness attributes has also a very weak positive correlation, it is exactly at -0.029
+   
    The strongest weak positive correlation is between valence and danceability, which is at 0.41
+   
    The second strongest weak positive correlation is between valence and energy, which is at 0.36
 
 #### Platform Popularity
 
-   To check
+   To check if there are patterns for a track's popularity among different platforms. We should compare the different platforms attributes such as their playlists and charts. Let use both check the total and mean occurences to see if there is a pattern or any bias. To implement this, the block of code below is used
+
+   For the total occurrences in playlists across different platforms
+
+   ```python
+   platform_playlists = ['in_spotify_playlists','in_deezer_playlists','in_apple_playlists']
+   # Select the specified platform statistics
+
+   sns.barplot(data=df_spotify[platform_playlists].sum(), palette='viridis')
+   # Creates barplot with their respecive means and also colors it
+
+   plt.yscale('log')
+   # Scales the bar sizes
+
+   plt.title("Platform Playlist Occurrences vs. Number of Occuring Tracks Barplot")
+   plt.xlabel("Platform Playlist Occurreneces")
+   plt.ylabel("Total Number of Occurrences")
+   # Labels the plot's title, x-axis, and y-axis
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/cbb6c190-0a09-4026-8a64-44e16050543f)
+
+   
+   For the mean occurrences in playlists accross all platforms
+
+   ```python
+   platform_playlists = ['in_spotify_playlists','in_deezer_playlists','in_apple_playlists']
+   # Select the specified platform statistics
+
+   sns.barplot(data=df_spotify[track_platform_selected].mean(), palette='viridis')
+   # Creates barplot with their respecive means and also colors it
+
+   plt.yscale('log')
+   # Scales the bar sizes
+
+   plt.title("Platform Playlists Mean vs. Mean of Number of Occuring Tracks")
+   plt.xlabel("Selected Platform Statistics")
+   plt.ylabel("Mean Number of Occurrences")
+   # Labels the plot's title, x-axis, and y-axis
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/e312b205-b4b5-4e2f-beb2-bbe4ef515df5)
+
+   ```python
+   platform_playlists = ['in_spotify_playlists','in_deezer_playlists','in_apple_playlists']
+   # Select the specified platform statistics
+
+   palette_color = sns.color_palette('pastel') 
+   # colors the pie chart
+
+   plt.figure(figsize=(12,12))
+   # resizes the pie chart
+
+   plt.pie(df_spotify[platform_playlists].sum(), labels=platform_playlists, colors=palette_color, autopct='%.0f%%') 
+   # creates the pie chart and labels each slice
+
+   plt.title("Playlist Counts Pie Chart")
+   # sets the title of the pie chart
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/605e0509-f551-42f9-bf9d-20a8a0f2736e)
+
+   For the pie chart visualization for the division of the total streams
+
+   ```python
+   platform_playlists = ['in_spotify_playlists','in_deezer_playlists','in_apple_playlists']
+   # Select the specified platform statistics
+
+   palette_color = sns.color_palette('pastel') 
+   # colors the pie chart
+
+   plt.figure(figsize=(12,12))
+   # resizes the pie chart
+
+   plt.pie(df_spotify[platform_playlists].sum(), labels=platform_playlists, colors=palette_color, autopct='%.0f%%') 
+   # creates the pie chart and labels each slice
+
+   plt.title("Playlist Counts Pie Chart")
+   # sets the title of the pie chart
+   ```
+
+   It would seem that the more the track is in spotify playlists, the more it is streamed. The apple playlis does not seem to be much of an indicator of how much a track is streamed.
+   
+Spotify playlists being the biggest indicator of the most streamed tracks makes sense as it is the more accessible, and customizable app for the masses
+
+Both Spotify and Deezer (in specific countries) is also not locked from any paywall and is free to use unlike Apple music.
+
+Let us dive deeper by comparing the different platform's statistics directly by their playlist counts and chart counts
+
+
+
+
 
 #### Advanced Analysis
 - Perform any additional analysis, such as correlations or pattern analysis across keys or modes.
