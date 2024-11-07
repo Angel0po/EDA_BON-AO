@@ -271,15 +271,24 @@ df_spotify.drop(index=873, inplace=True)
 
      There are now only 50 missing values in the Shazam chart attribute. For these missing values, I implemented an imputation method as it was a numerical variable, and according to Chandrikasai (2023), an imputation method can be used when the missing values in a column are less than 10% of the whole population which in this case is true. The imputation method that I chose was to fill in the missing values with the median of the attribute. I chose this imputation method as it assumes that the missing data is missing completely at random, according to Keita (2023), and almost all data analysis algorithms/software assumes that data are missing completely at random, according to The Data Story Guide (n.d.). Nevertheless, it should be noted that all imputation has a con and might distort results according to Subha (2024), but since it is less than 10% of the population and the value used to replace is a valid imputation method, I think it will have little to no effect to distort the results.
 
-     The code below is used to implement the imputation method
+     The code below is used to implement the imputation method. We first store the calculated median value in a variable, check what the median is, and then use it to fill in the missing values.
 
      ``` python
-     
+     shazam_median = df_spotify['in_shazam_charts'].median()
+     f"The median value of the 'in_shazam_charts' is {shazam_median}"
+     ```
 
+     The first line of code uses .median() which calculates the median of a given column and stores the value of the median in shazam_median
+     The second line of code prints out the information of what is the value of the median
      
+     Output
+     ![image](https://github.com/user-attachments/assets/d79231ff-8210-4bd6-aab3-56d8c950306f)
 
+     The next code is used to replace all the missing values with the median value.
 
-     
+     ```python
+     df_spotify['in_shazam_charts'].fillna(shazam_median, inplace=True)
+     ```
 
 ---
 
