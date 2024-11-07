@@ -327,11 +327,11 @@ df_spotify.drop(index=873, inplace=True)
 - The total count, mean, meadian, and standard deviation of the streams attribute are as follows:
 
   | Data              | Streams                       |
-|-----------------------|--------------------------------------|
-| Total            | 487818415565         |
-| Mean       | 514034157.60273975      |
-| Median        | 288101651.0       |
-| Standard Deviation        |567574041.7934494   |
+  |---------------------|--------------------------------------|
+  | Total            | 487818415565         |
+  | Mean       | 514034157.60273975      |
+  | Median        | 288101651.0       |
+  | Standard Deviation        |567574041.7934494   |
 
   
 
