@@ -324,7 +324,7 @@ df_spotify.drop(index=873, inplace=True)
   All the rows that has a missing key were dropped. Lastly, the rest of missing values in the in_shazam_charts got replaced by the median of the column
 
 #### Basic Descriptive Statistics
-- The total count, mean, meadian, and standard deviation of the streams attribute are as follows:
+- The total count, mean, median, and standard deviation of the streams attribute are as follows:
 
   | Data              | Streams                       |
   |---------------------|--------------------------------------|
@@ -333,19 +333,341 @@ df_spotify.drop(index=873, inplace=True)
   | Median        | 288101651.0       |
   | Standard Deviation        |567574041.7934494   |
 
+  It would seem that the tracks with the greater streams highly influence the average streams, and this is also corroborated with the high standard deviation. The median also suggests that half of the track has less than 300 million streams. Let us dig deeper and see the top 10 most streamed tracks to see what is their value and the distribution of the streams. The code used for that is seen below
+
+  ``` python
+  df_spotify[['track_name', 'streams']].sort_values(by='streams', ascending=False).head(10)
+   # ascending=False sorts the tracks by greatest to least number of streams, gets the top ten by .head(10),
+   # and only prints the title and its number of streams
+   ```
+
+   Output
+
+  ![image](https://github.com/user-attachments/assets/7235b1fc-15e8-4efa-98ac-e63078b63a62)
+
+   It would seem that the top 2 highest streamed track has over 3 billion streams and heavily affect the calculation of the mean and standard deviation, other than that the rest of the top 10 has also over 2 billion streams. Next would be the distribution of the streams to visualize just how many tracks and is done by implementing the code below.
+
+  ``` python
+  sns.histplot(df_spotify, x= 'streams',color='blue', element="poly").set(title = 'Distribution of total streams')
+   # plots the distribution of the stream count, sets the colo and the title
+   sns.set_style("whitegrid", {'grid.linestyle': '--'})S
+   # designs the grid
+
+  plt.xlabel('Number of Streams by Billions')
+   plt.ylabel('Number of Tracks')
+   # labels the x and y title
+  ```
+
+  Output
+
+  ![image](https://github.com/user-attachments/assets/9da19703-10d7-4fcb-9fe2-3afd8c343c62)
+
+  The plot further suggest that the tracks with the higher number of streams heavily influence the calculated mean and standard deviation of the streams. It can also be seen that over 200 tracks did not even crack the half billion mark yet it is the calculated mean.
+
+  Now, let us check the distribution track's artist count and release year to see if it has any correlation to their number of streams.
+
+  First, to plot for the distribution of the track's release year, the block of code was used below
+
+  ```python
+  ryd = sns.displot(df_spotify, x='released_year',color='blue', discrete=True, aspect=3).set(title = "Distribution of the most streamed spotify songs of 2023 by released year")
+   # To plot the distrbution of the released_year along with its distribution line, and each year being represented
+   # also labels title
+
+   ax = ryd.ax
+   ax.grid(True, axis="y", color="gray", alpha=0.5)
+   # to place grids along the x_axis
+
+   plt.xlabel('Track Release Year')
+   plt.ylabel('Number of Tracks')
+   # labels x and y axes
+  ```
+
+  Output
+
+  ![image](https://github.com/user-attachments/assets/02dfcb8a-6245-42ed-95ca-9279dd1f2db5)
+
+  It would seem the most streamed spotify songs of 2023 are mostly from the 2020's and largerly from the year 2022. This makes sense as trendy and topical music gets played over and over as they are newly released
   
+  Tracks from 2022 would also accumulate more plays at it had more time to earn it than the tracks that were released upon the year 2023. It also represents the time it takes for a song to rise in popularity. It would also seem that the distribution of the released year of the song follows recency bias, except for some goldies and some retro songs of the 2000's.
+
+  To track the outliers, we have to first calculate the interquartile range to find the outliers and count them all. For this, the block of code was used below
+
+  ``` python
+  Q1ry = df_spotify['released_year'].quantile(0.25) 
+   # 1st quartile
+
+   Q3ry = df_spotify['released_year'].quantile(0.75)
+   # 2nd quartile
+   IQRry = Q3ry - Q1ry
+
+   # Equation for finding outliers 
+   outliers_ry = df_spotify[(df_spotify['released_year'] < Q1ry - 1.5 * IQRry) | (df_spotify['released_year'] > Q3ry + 1.5 * IQRry)]
+
+   ry_outliers_num = outliers_ry.shape[0]
+   # gets the number of outliers
+
+   f"There are about {ry_outliers_num} outliers within the release year attributes of the tracks."
+  ```
+
+  Output
+
+  ![image](https://github.com/user-attachments/assets/77c99b01-85f4-435e-ab10-ca65f077fda0)
+
+  To visualize the number of outliers, a boxplot can be used to do this. As such the block of code was implemented beliow.
+
+  ``` python
+  plt.figure(figsize=(15, 5))
+   # To size the boxplots
+
+   sns.boxplot(x=df_spotify['released_year'], fliersize=3)
+   # Creates boxplot and resize the outlier data points
+
+   plt.title("Track Release Year Boxplot") 
+   # Sets title for the boxplot
+   plt.xlabel("Track Release Year")
+   # Labels x-axis
+   plt.show()
+  ```
+
+  Output
+
+  ![image](https://github.com/user-attachments/assets/8f7f431f-29a9-4cd5-898e-6f2a02b0ee30)
+
+   It would seem that there are about 151 outliers when it comes to the track's release year being on the list of the most streamed spotify songs of 2023. What stands out from the plot is the one song the 1940's and a lot of them are cooped up around 2010's and early 2000's.
+
+   For the artist count, the block of code was used below
+
+  ``` python
+
+  ac = sns.displot(df_spotify, x='artist_count', color='Blue', discrete=True).set(title = "Distribution of the number of credited artists per track")
+   # To plot the distrbution of the released_year along with its distribution line, and each year being represented
+   # To plot the distrbution of the released_year along with its distribution line, and each artist count being represented
+   # also labels title
+
+   sns.set_style("white")
+
+   ax = ac.ax
+   ax.grid(True, axis="y", color="gray", alpha=0.5)
+   # to place grids along the x_axis
+
+   plt.xlabel('Number of Credited Artists')
+   plt.ylabel('Number of Tracks')
+   # labels x and y axes
+  ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/c54154d4-53cd-421c-9e3c-9e23f7f709ba)
+
+   
+   It would seem that most of songs in the dataset are credited to one artist. The more artists are credited to a song, the less likelihood it will make the list of the most streamed. To check for outliers, the same process used as before will be applied.
+
+  ```python
+  Q1ac = df_spotify['artist_count'].quantile(0.25) # 1st quarter 
+   Q3ac = df_spotify['artist_count'].quantile(0.75) # 3rd quarter
+   IQRac = Q3ac - Q1ac
+   # Calculate interquartile
+
+   # Equation for finding outliers within a given data
+   outliers_ac = df_spotify[(df_spotify['artist_count'] < Q1ac - 1.5 * IQRac) | (df_spotify['artist_count'] > Q3ac + 1.5 * IQRac)]
+   ac_outliers_num = outliers_ac.shape[0]
+   f"There are about {ac_outliers_num} outliers within the release year attributes of the tracks."
+  ```
+
+  Output
+
+  ![image](https://github.com/user-attachments/assets/3052a1d1-d8b4-40b7-96f6-0870b5830157)
+
+  For visualization,
+
+  ```python
+  plt.figure(figsize=(15, 5))
+   # To size the boxplots
+
+   sns.boxplot(x=df_spotify['artist_count'], fliersize=3)
+   # Creates boxplot and resize the outlier data points
+
+   plt.title("Number of Credited Artist Per Track Boxplot") 
+   # Sets title for the boxplot
+   plt.xlabel("Track Release Year")
+   # Labels x-axis
+   plt.show()
+  ```
+
+  It would seem that if a track has 3 or less credited artists, the greater likelihood it will appear on the given dataset.
 
 #### Top Performers
-- Identify the tracks and artists with the highest streaming counts.
+
+  The top 5 performing tracks by streams can be seen by using the code below
+
+  ```python
+   df_spotify[['track_name', 'artist(s)_name','streams']].sort_values(by='streams', ascending=False).head()
+   # it sorts the data from greatest to least streams
+   # it locates and print the first 5 tracks along with its track name and the number of streams
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/6581ab4d-3c22-48ce-bc3a-0c825b17a6d1)
+
+   The top 5 most streamed tracks can be seen above. The most streamed track by far is the song 'Blinding Lights' by The Weeknd. Interestingly enough, one of the top 5 songs by streams has two artists credited on it.
+
+   To the top 5 performing artists by track count, we need to seperate all the artists into each of their own row so that they we could count their streams correctly.
+
+   First, we should seperate all the artist by using the code below
+
+   ```python
+   df_spotify = df_spotify.explode('artist(s)_name').reset_index(drop=True)
+   df_spotify['artist(s)_name'] = df_spotify['artist(s)_name'].str.strip()
+   # The .explode() makes it so that the list is counted as a row, we also reset index for cleaner analaysis
+   # The list of the seperated names in now stored in the column of the artist(s)_name
+   ```
+
+   Since the artists are now seperated, we should also drop the artist count column as it is no longer valid. The EDA part on the artist count is also already done so we should implement this now.
+
+   ```python
+   df_spotify.drop('artist_count',axis=1,inplace=True)
+   # drops the artist_count attribute from the whole dataset
+   df_spotify.rename(columns={'artist(s)_name':'artist_name'}, inplace=True)
+   # renames the attribute of artist name properly
+   ```
+
+   Now we can finally properly see the top 5 artists by track count
+
+   ```python
+   df_spotify['artist_name'].value_counts().head()
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/9c39a24d-e0c2-4cba-8e06-7b9323d29059)
+
+   It would seem that Bad Bunny is number one in terms of the number tracks appearing in the dataset. Taylor Swift being number two makes sense as she re-releases some of her tracks with different versions as well. Kendrick Lamar being top 4 makes sense as his newest album was released on 2022.
 
 #### Temporal Trends
-- Explore trends in track releases over time and identify any notable patterns.
+
+   To check the temporal trends, we can start by checking the number of tracks released over time
+
+   For tracks released over year, it can be checked using the code below
+
+   ```python
+   sns.displot(data=df_spotify, x='released_year', element='poly', fill=False, discrete=True, aspect = 3)
+   # plots the tracks released vs the year it was released
+
+   plt.xlabel('Months')
+   plt.ylabel('Number of Tracks Released')
+   plt.title('Number of Tracks Released Per Month')
+   # labels the different parts of the plot such as the x-axis, y-axis, and the title
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/19d18bbd-4b4c-4607-9ead-365d30bc016b)
+
+   It shows the same trend that most of the songs in the dataset are released in the 2020's as observed before. It also favors recency bias as the newer tracks gain the more streams daily.
+   
+   For the release over the months, the code below can be used
+
+   ```python
+   sns.displot(data=df_spotify, x='released_month', element='poly', fill=False, discrete=True, aspect = 3)
+   # plots the tracks released vs the months it was released on
+   sns.set_style("whitegrid", {'grid.linestyle': '--'})
+
+   plt.xlabel('Months')
+   plt.ylabel('Number of Tracks Released')
+   plt.title('Number of Tracks Released Per Month')
+   # labels the different parts of the plot such as the x-axis, y-axis, and the title
+
+
+   plt.xticks(ticks=range(1, 13), labels=[calendar.month_name[i] for i in range(1, 13)])
+   # uses calendar library to name the months for the x-axis
+
+   plt.xlim(1, 12)
+   # shows all the months
+   plt.show()
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/d4b284ed-3b6f-4785-a852-1898a360965d)
+
+   The months that saw the most tracks are both January and May. It would seem that the track release over the months does not follow any patterns or biases. To further explore this, we should track the release trend over the months from the year of 2019-2023 as that is the years where most of tracks are from in the dataset. To implement this the block of code is used below
+
+   ```python
+   
+   tracks_years_data = pd.DataFrame()
+   # Create a seperate dataframe for selected years
+
+   for year in range(2019, 2024):
+       df_sub = df_spotify[df_spotify.released_year == year].groupby('released_month').size().reset_index(name='track_count')
+       df_sub['year'] = year  # Add the year column
+       tracks_years_data = pd.concat([tracks_years_data, df_sub], ignore_index=True)  # Concatenate to the seperate dataframe
+
+   # For loop for each year 2019-2020 to get the release month of all the tracks
+
+   plt.figure(figsize=(15, 5))
+   # Sets size of the plot
+
+   sns.lineplot(x='released_month', y='track_count', hue='year', data=tracks_years_data)
+   sns.set_style("whitegrid", {'grid.linestyle': '--'}) 
+   # Uses seaborn to plot the yearly data vs the track release month, and designs the grid
+
+   plt.title("Monthly Track Releases by Year")
+   plt.xlabel("Month")
+   plt.ylabel("Number of Tracks")
+   # Labels the plots title, x-axis, and y-axis
+
+   plt.xticks(ticks=range(1, 13), labels=[calendar.month_name[i] for i in range(1, 13)])
+   # x-labels as months using the calendar library
+
+   plt.legend(title="Year")
+   # Shows the legend for each line
+
+   plt.show()
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/261a50e5-63a5-4c94-a238-ed6d41cd3671)
+
+   It would also still seem as if the track release over the months has no pattern and does not follow any trends or biases.
 
 #### Genre and Music Characteristics
-- Analyze relationships between genres, musical attributes, and streaming counts.
+
+   To find if there is any correlation between the musical characteristics of a song and it's number of streams. A heatmap is implemented and to visualize if there is any positive or negative correlation between them. The block of code below can be used below to implement this
+
+   ```python
+   musical_attr = ['streams', 'bpm','danceability_%','valence_%','energy_%','acousticness_%','instrumentalness_%','liveness_%','speechiness_%']
+   # Set up seperate data to only include streams and the track's musical attributes
+
+   df_musical_attr = df_spotify[musical_attr]
+   # Turn the seperate data into a dataframe
+
+   corr_music_attr = df_musical_attr.corr()
+   # calculates correlation between all the streams and musical attributes
+
+   sns.heatmap(corr_music_attr, annot=True, vmin = -1, vmax = 1, cmap='BuPu')
+   # creates heatmap to visualize all the correlations
+
+   plt.title("Heatmap of Streams & Different Music Attributes")
+   ```
+
+   Output
+
+   ![image](https://github.com/user-attachments/assets/83041b19-6480-4e47-bd3b-75a830280af5)
+
+   It would seem that all of the musical attributes has a very weak negative correlation as they all have values from -0.01 to -0.19
+   The musical attribute that has the least correlation to the number of streams is the bpm or beats per minute
+   The strongest weak negative correlation is both danceability and speechiness being both -0.11 respectively
+   The two seem to attributes seem to influence streams the most, although negatively
+   The danceability and energy attributes has a very weak positive correlation, it is exactly at 0.18
+   The valence and acousticness attributes has also a very weak positive correlation, it is exactly at -0.029
+   The strongest weak positive correlation is between valence and danceability, which is at 0.41
+   The second strongest weak positive correlation is between valence and energy, which is at 0.36
 
 #### Platform Popularity
-- Compare the popularity of tracks across different platforms (e.g., Spotify, Apple Music).
+
+   To check
 
 #### Advanced Analysis
 - Perform any additional analysis, such as correlations or pattern analysis across keys or modes.
