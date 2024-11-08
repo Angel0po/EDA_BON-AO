@@ -10,8 +10,9 @@
    - [Loading the Data](#loading-the-data)
    - [Initial Observations](#initial-observations)
 * [6. Data Preparation](#6-data-preparation)
-   - [Missing Values](#missing-values)
-   - [Duplicates](#duplicates)
+   - [Handling Wrong Datatypes](#handling_wrong_datatypes)
+   - [Handling Duplicate Values](#missing-values)
+   - [Handling Missing Values](#missing-values)
 * [7. Analysis](#7-analysis)
    - [Overview of Dataset](#overview-of-dataset)
    - [Basic Descriptive Statistics](#basic-descriptive-statistics)
@@ -173,13 +174,34 @@ From here, we can see that:
      df_spotify['streams'] = pd.to_numeric(df_spotify['streams'], errors = 'coerce')
      ```
 
-     The line of code above uses pd.to_numeric to turn all the values inside the inputted column into a numerical variable; the error = 'coerce' part was needed after an error popped up that it could not convert a single value indexed at 574 to be turned into a numerical value. It would seem that it contains the other track's information on the other attributes, as can be seen below.
+     The line of code above uses pd.to_numeric to turn all the values inside the inputted column into a numerical variable; the error = 'coerce' part was needed after an error popped up that it could not convert a single value indexed at 574 to be turned into a numerical value. It would seem that it contains the    other track's information on the other attributes. The value of the 574th row of streams is converted to Nan and is now missing.
+     
+   It used to store the values of the other columns related to the row of the song which was 'Love Grows (Where My Rosemary Goes)' by Edison Lighthouse
 
-     ``` python
-     
-     
+   It used to have 'BPM110KeyAModeMajorDanceability53Valence75Energy69Acousticness7Instrumentalness0Liveness17Speechiness3'
 
+   Upon researching, the original song has about 276,093,748 accumulated streams and is being streamed daily by 168,328 on 2024/10/16, which was 290 days since 2023
+   Subtracting 276,093,748 by 168,000 multiplied by 290 to account for the extra days, we get 227,373,748 streams. We should now store this value in that row as done below.
      
+   ``` python
+   df_spotify.at[574, 'streams'] = 227373748
+   ```
+
+   For the in_deezer_playlists attribute
+
+   The in_deezer_playlists contains numbers with commas and it is the reason it detected as an object. Replacing all the commas with a space using.str.replace(","") ensuring that it can be all converted into numerical values. The astype(float) is used to convert all the values in to column to become the float datatype. The code can be seen below
+
+   ```python
+   df_spotify['in_shazam_charts'] = df_spotify['in_shazam_charts'].str.replace(",","").astype(float)
+   ```
+
+   For the in_shazam_charts attribute
+
+   The 'in_deezer_playlists' column has the same issue, so we just need to repeat the previous process.
+
+   ```python
+   df_spotify['in_shazam_charts'] = df_spotify['in_shazam_charts'].str.replace(",","").astype(float)
+   ```
 
 #### Handling Duplicate Values
    - I handled the duplicated values by comparing the info of both instances side by side to check what has the correct data and to keep it, and to drop the one instance that has the wrong data.
