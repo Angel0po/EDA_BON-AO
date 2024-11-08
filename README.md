@@ -1348,4 +1348,12 @@ Wikipedia. (2024, October 13). About Damn Time. https://en.wikipedia.org/wiki/Ab
 
 ### Timeline of Activities
 
+Nov. 8, 2024 - Finished polishing the whole code & readme.
 
+Nov. 5, 2024 - Started working on the readme.
+
+Nov. 1-7, 2024 - Answering the guide questions & polishing the data preparation
+              
+Oct. 31, 2024 - Started coding on data pre-processing/preparation
+
+Oct. 30, 2024 - Started exploring the data set.
