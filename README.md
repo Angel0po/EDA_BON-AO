@@ -1278,7 +1278,7 @@ Bad bunny, Taylor Swift, and Peso Pluma.
 
 We have found out that if the song has 3 or fewer credited artists, was released during the 2020s, is in tune with C sharp, and is in the major mode, the more likely that the song will show up on the given dataset. 
 
-In terms of platform statistics, if the song is in Spotify playlists, Apple Music charts and 
+In terms of platform statistics, if the song is in Spotify playlists, Apple Music charts and Shazam charts
 
 
 ---
