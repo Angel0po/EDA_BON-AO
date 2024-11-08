@@ -9,7 +9,7 @@
 * [5. Data Exploration](#5-data-exploration)
    - [Loading the Data](#loading-the-data)
    - [Initial Observations](#initial-observations)
-* [6. Data Cleaning](#6-data-cleaning)
+* [6. Data Pre-processing](#6-data-cleaning/preparation)
    - [Missing Values](#missing-values)
    - [Duplicates](#duplicates)
 * [7. Analysis](#7-analysis)
