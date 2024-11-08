@@ -1306,10 +1306,44 @@ I specifically formatted and coded the pie chart in Seaborn; I learned it from G
 
 ### References
 
-Bobbitt, Z. (2021, August 5). How to add a title to Seaborn Plots (With examples). Statology. https://www.statology.org/seaborn-title/
+Bobbitt, Z. (2021, August 5). How to add a title to Seaborn Plots (With examples). Statology. https://www.statology.org/seaborn-title/ 
 
-Chandrikasai. (2023, April 10). Understanding the pros and cons of dropping missing values in data analysis. Medium. https://medium.com/@chandrikasai9997/understanding-the-pros-and-cons-of-dropping-missing-         values-in-data-analysis-1bd8d2300fbe
+Chandrikasai. (2023, April 10). Understanding the pros and cons of dropping missing values in data analysis. Medium. https://medium.com/@chandrikasai9997/understanding-the-pros-and-cons-of-dropping-missing-values-in-data-analysis-1bd8d2300fbe 
 
+Elgiriyewithana, N. E. (2023). Most streamed Spotify Songs 2023. Kaggle. https://www.kaggle.com/dsv/6367938 
 
+Gateway, M. G. (2024a). SPIT IN MY FACE! Key & BPM | ThxSoMch | Music Gateway. Music Gateway. https://www.musicgateway.com/song-key-bpm/thxsomch/spit-in-my-face 
 
-### Timeline
+Gateway, M. G. (2024b). Take My Breath - Single version Key & BPM | The Weeknd | Music Gateway. Music Gateway. https://www.musicgateway.com/song-key-bpm/the-weeknd/take-my-breath-single-version 
+
+GeeksforGeeks. (2022a, February 28). How to create a pie chart in Seaborn? GeeksforGeeks. https://www.geeksforgeeks.org/how-to-create-a-pie-chart-in-seaborn/ 
+
+GeeksforGeeks. (2022b, June 1). What does inplace mean in Pandas? GeeksforGeeks. https://www.geeksforgeeks.org/what-does-inplace-mean-in-pandas/ 
+
+GeeksforGeeks. (2024, July 11). Convert pandas dataframe column to float. GeeksforGeeks. https://www.geeksforgeeks.org/convert-pandas-dataframe-column-to-float/ 
+
+Ghosh, T. K. (2023, July 17). How to set axes labels & limits in a Seaborn plot? Tutorials Point. https://www.tutorialspoint.com/how-to-set-axes-labels-amp-limits-in-a-seaborn-plot 
+
+Keita, Z. (2023, January 31). Top Techniques to Handle Missing Values Every Data Scientist Should Know. https://www.datacamp.com/tutorial/techniques-to-handle-missing-data-values 
+
+kworb. (2024). Edison Lighthouse - Spotify Top Songs. https://kworb.net/spotify/artist/1NRzxuPpdGushT8YmF5NAa_songs.html 
+
+North Coast Synthesis Ltd. (2024). key of A flat major - Chord Database. https://files.northcoastsynthesis.com/chords/key/AbM#:~:text=Enharmonic%20equivalent%3A%20G%E2%99%AFM. 
+
+pandas. (n.d.). pandas.DataFrame.explode — pandas 2.2.3 documentation. https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.explode.html 
+
+Saturn Cloud. (2023, October 22). How to Fix the Pandas UnicodeDecodeError utf8 codec cant decode bytes in position 01 invalid continuation byte Error | Saturn Cloud Blog. https://saturncloud.io/blog/how-to-fix-the-pandas-unicodedecodeerror-utf8-codec-cant-decode-bytes-in-position-01-invalid-continuation-byte-error/ 
+
+Subha. (2024, February 21). Handling missing values in dataset — 9 methods that you need to know. Medium. https://medium.com/@pingsubhak/handling-missing-values-in-dataset-7-methods-that-you-need-to-know-5067d4e32b62 
+
+The Data Story Guide. (n.d.). Checking and Understanding Missing Data. https://the.datastory.guide/hc/en-us/articles/4570444289167-Checking-and-Understanding-Missing-Data 
+
+Waskom, M. (n.d.-a). seaborn.displot — seaborn 0.13.2 documentation. https://seaborn.pydata.org/generated/seaborn.displot.html#seaborn.displot 
+
+Waskom, M. (n.d.-b). seaborn.heatmap — seaborn 0.13.2 documentation. https://seaborn.pydata.org/generated/seaborn.heatmap.html 
+
+Waskom, M. (n.d.-c). seaborn.histplot — seaborn 0.13.2 documentation. https://seaborn.pydata.org/generated/seaborn.histplot.html 
+
+Wikipedia. (2024, October 13). About Damn Time. https://en.wikipedia.org/wiki/About_Damn_Time
+
+### Timeline of Activities
