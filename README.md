@@ -9,10 +9,10 @@
 * [5. Data Exploration](#5-data-exploration)
    - [Loading the Data](#loading-the-data)
    - [Initial Observations](#initial-observations)
-* [Data Cleaning](#data-cleaning)
+* [6. Data Cleaning](#6-data-cleaning)
    - [Missing Values](#missing-values)
    - [Duplicates](#duplicates)
-* [Analysis](#analysis)
+* [7. Analysis](#7-analysis)
    - [Overview of Dataset](#overview-of-dataset)
    - [Basic Descriptive Statistics](#basic-descriptive-statistics)
    - [Top Performers](#top-performers)
@@ -20,13 +20,12 @@
    - [Genre and Music Characteristics](#genre-and-music-characteristics)
    - [Platform Popularity](#platform-popularity)
    - [Advanced Analysis](#advanced-analysis)
-* [Key Findings](#key-findings)
-* [Conclusion](#conclusion)
-* [Key Faced Errors](#key_faced_errors)
+* [8. Key Takeaways](#8-key-findings)
+* [9. Key Errors and Learnings](#9-key-errors-and-learnings)
     
-[References](#references)
+*[References](#references)
 
-[Timeline](#Timeline)
+*[Timeline](#Timeline)
 
 ---
 
@@ -1286,7 +1285,7 @@ Lastly, most tracks favor the major mode over the minor for the count of total t
 
 ---
 
-### 10. Key Errors and Learnings
+### 9. Key Errors and Learnings
 
 The first significant error I encountered was when I tried to load the CSV file; the error code I received was UnicodeDecodeError. Upon researching, the way to fix this that worked was by adding encoding='ISO-8859-1' in the argument when loading in the file as pandas data frame. I got the idea from Saturn Cloud (2023). 
 
