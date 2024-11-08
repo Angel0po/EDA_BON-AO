@@ -24,9 +24,9 @@
 * [8. Key Takeaways](#8-key-takeaways)
 * [9. Key Errors and Learnings](#9-key-errors-and-learnings)
     
-*[References](#references)
+* [References](#references)
 
-*[Timeline](#Timeline)
+* [Timeline of Activities](#timeline-of-activities)
 
 ---
 
