@@ -660,7 +660,7 @@ df_spotify.drop(index=873, inplace=True)
    
    The musical attribute that has the least correlation to the number of streams is the bpm or beats per minute
    
-   The strongest weak negative correlation is both danceability and speechiness being both -0.11 respectively
+   The strongest weak negative correlation is both danceability and speechiness being both -0.11 respectively. These two seem to influence the number of streams a song has, although negative and very weak.
    
    The danceability and energy attributes has a very weak positive correlation, it is exactly at 0.18
    
@@ -670,11 +670,11 @@ df_spotify.drop(index=873, inplace=True)
    
    The second strongest weak positive correlation is between valence and energy, which is at 0.36
 
-   These two seem to influece the number of streams the most, although 
+   
 
 #### Platform Popularity
 
-   To check if there are patterns for a track's popularity among different platforms. We should compare the different platforms attributes such as their playlists and charts. Let use both check the total and mean occurences to see if there is a pattern or any bias. To implement this, the block of code below is used
+   To check if there are patterns for a track's popularity among different platforms. We should compare the attributes of the different platforms, such as their playlists and charts. Let use both check the total and mean occurences to see if there is a pattern or any bias. To implement this, the block of code below is used
 
    For the total occurrences in playlists across different platforms
 
@@ -699,14 +699,14 @@ df_spotify.drop(index=873, inplace=True)
    ![image](https://github.com/user-attachments/assets/cbb6c190-0a09-4026-8a64-44e16050543f)
 
    
-   For the mean occurrences in playlists accross all platforms
+   For the mean occurrences in playlists across all platforms
 
    ```python
    platform_playlists = ['in_spotify_playlists','in_deezer_playlists','in_apple_playlists']
    # Select the specified platform statistics
 
    sns.barplot(data=df_spotify[track_platform_selected].mean(), palette='viridis')
-   # Creates barplot with their respecive means and also colors it
+   # Creates barplot with their respective means and also colors it
 
    plt.yscale('log')
    # Scales the bar sizes
@@ -742,7 +742,7 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/605e0509-f551-42f9-bf9d-20a8a0f2736e)
 
-   For the pie chart visualization for the division of the total streams
+   For the pie chart visualization of the division of the total streams
 
    ```python
    platform_playlists = ['in_spotify_playlists','in_deezer_playlists','in_apple_playlists']
@@ -765,15 +765,15 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/724a1fc1-effb-4cc5-85de-f0182ba0d348)
 
-   It would seem that the more the track is in spotify playlists, the more it is streamed. The apple playlis does not seem to be much of an indicator of how much a track is streamed.
+   It would seem that the more the track is in Spotify playlists, the more it is streamed. The Apple playlist does not seem to be much of an indicator of how much a track is streamed.
    
    Spotify playlists being the biggest indicator of the most streamed tracks makes sense as it is the more accessible, and customizable app for the masses. It is also worth noting that 92% of the total playlist occurrence comes from Spotify Playlists
 
-   Both Spotify and Deezer (in specific countries) is also not locked from any paywall and is free to use unlike Apple music.
+   Both Spotify and Deezer (in specific countries) are not locked by any paywall and are free to use, unlike Apple Music.
 
    Let us dive deeper by comparing the different platform's statistics directly by their playlist counts and chart counts, by using the same process
 
-   For the total count of playlists occurrences barplot
+   For the total count of playlist occurrences barplot
 
    ```python
    platform_charts = ['in_spotify_charts','in_apple_charts','in_deezer_charts','in_shazam_charts']
@@ -833,13 +833,13 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/e9250f52-7cc2-4d05-b761-2df22504c932)
 
-   It would seem in the terms of charts across all platforms. The charts of Apple Music and Shazam seems to be the biggest indicator of the tracks being in the list of the most streamed Spotify songs of 2023. Oddly enough, this time Deezer and Spotify charts are not a big indicator in this facet. 
+   It would seem in terms of charts across all platforms. The charts of Apple Music and Shazam seem to be the biggest indicator of the tracks being in the list of the most streamed Spotify songs of 2023. Oddly enough, this time Deezer and Spotify charts are not a big indicator in this facet. 
 
-   It is also worth noting that Apple Music and Deezer Charts account for 42% and 46% respectively of the number of total charts.
+   It is also worth noting that Apple Music and Deezer Charts account for 42% and 46%, respectively, of the total charts.
 
 #### Advanced Analysis
 
- To perform advanced analysis, we tasked to find the number of tracks per key in order to see if there is trend or a pattern. Let us first group the number of tracks by their labeled keys, and then plot them into a bar plot and a pie chart for visualization and analysis.
+ To perform advanced analysis, we were tasked to find the number of tracks per key in order to see if there is a trend or a pattern. Let us first group the number of tracks by their labeled keys, and then plot them into a bar plot and a pie chart for visualization and analysis.
 
  We should also study the performance of the artists across all platform statistics.
 
@@ -1034,9 +1034,9 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/d9a168f0-d367-44d6-b1e2-5c1a1c2600da)
 
-   It would seem that the major mode has 548 tracks and accounts for more than half of the total tracks. 
+   The major mode seems to have 548 tracks and accounts for more than half of the total tracks. 
 
-   For the analyzing the relationship of the mode and streams, we should first group them by mode and streams
+   For analyzing the relationship between the mode and streams, we should first group them by mode and streams.
 
    ```python
    df_mode_stream = df_spotify[['mode', 'streams']].groupby('mode').sum('streams')
@@ -1091,7 +1091,7 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/7a9df076-c84f-4e66-9698-6de07b19c851)
 
-   It would seem that people listen to songs of the Major mode than the minor. This dominance maybe also due to the fact that there are more songs in major than in minor in the whole dataset. Let us dig deeper and see which mode is more listened to in average. We should first calculate the mean and then plot it to visualize their difference.
+   It would seem that people listen to songs of the Major mode than the minor. This dominance may also be due to the fact that there are more songs in major than in minor in the whole dataset. Let us dig deeper and see which mode is more listened to in average. We should first calculate the mean and then plot it to visualize their difference.
 
    ```python
    df_mode_stream['mean_streams'] = df_mode_stream.streams / df_mode_counts.number_of_tracks
@@ -1109,11 +1109,11 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/2da7d964-8d06-4ce5-adf9-149277ba63d8)
 
-   It would seem that people still listen to tracks that has the major mode on average but the difference between the two did get smaller.
+   It would seem that people still listen to tracks that have the major mode on average, but the difference between the two did get smaller.
 
-   For the next part we should analyze the performance of the artists across the playlists and charts across all the platforms
+   For the next part, we should analyze the performance of the artists across the playlists and charts across all the platforms.
 
-   First, we should group the track by artists and playlist counts, then graph both the top 5 across each playlist count, and then the total count of playlist count. To implement this, the lines of code was used below with their corresponding output
+   First, we should group the track by artists and playlist counts, then graph both the top 5 across each playlist count, and then the total playlist count. To implement this, the lines of code were used below with their corresponding output.
 
    ```python
    platform_playlists = ['in_spotify_playlists','in_apple_playlists','in_deezer_playlists']
@@ -1268,7 +1268,7 @@ df_spotify.drop(index=873, inplace=True)
    The Weeknd tops out both the total playlists and charts count, and with him that appears in both top 5 of the two categories are
 Bad Bunny, Taylor Swift, and Peso Pluma.
 
-   It would seem that the occurrences of artists in playlists are more consistent than their occurrences in charts. Feid, who appeared in all of the top 5 chart counts across different platforms yet did not make the top 5 of the total char counts.
+   The occurrences of artists in playlists are more consistent than their occurrences in charts. Feid, who appeared in all of the top 5 chart counts across different platforms yet did not make the top 5 of the total char counts.
 
    Meanwhile, all of the top 5 artists in chart counts across different platforms were also the same artists in the top 5 among total chart counts.
    
@@ -1280,16 +1280,29 @@ We have found out that if the song has 3 or fewer credited artists, was released
 
 In terms of platform statistics, if the song is in Spotify playlists, Apple Music charts, and Shazam charts, it is more likely that the song will show up on the given dataset. It was also found that the artist frequency in playlists across all platforms is more consistent than the artist frequency in charts across all platforms.
 
+In terms of the key of each song, songs with the key C sharp, D, and E, are the top-performing songs in terms of streams on Spotify in 2023.
 
-
-
----
-
-### 10. Key Errors
+Lastly, most tracks favor the major mode over the minor for the count of total tracks, as well as total streams, the stream median.
 
 ---
 
-### 11. Key Learnings
+### 10. Key Errors and Learnings
+
+The first significant error I encountered was when I tried to load the CSV file; the error code I received was UnicodeDecodeError. Upon researching, the way to fix this that worked was by adding encoding='ISO-8859-1' in the argument when loading in the file as pandas data frame. I got the idea from Saturn Cloud (2023). 
+
+The second significant error was trying to convert the data type of the streams to a numerical data type. Upon researching, I fixed this by adding errors =' coerce'. I got the idea of converting the columns to numerical data types by fixing the error from GeeksforGeeks (2024).
+
+The third significant error/problem I faced was editing the original dataset. I got the idea of putting 'inplace=True' in commands such as filling in missing values and dropping the wrong instance of the duplicates from GeeksforGeeks (2022).
+
+For formatting and coding the different plots in Seaborn, I learned it from Michael Waskom, references are seen below.
+
+For labeling and sizing the different plots, I learned it from Bobbitt (2021) and Ghosh (2023).
+
+I specifically formatted and coded the pie chart in Seaborn; I learned it from GeeksforGeeks (2022a).
+
+---
+
+
 
 ### References
 List any references used for the analysis.
