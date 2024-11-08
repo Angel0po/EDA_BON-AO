@@ -1120,13 +1120,13 @@ df_spotify.drop(index=873, inplace=True)
    # groups all playlists attribute
 
    df_artist_playlists = df_spotify.groupby('artist_name').sum(platform_playlists)
-   # groups by artists and adds all their occurances in the different platform pllaylists
+   # groups by artists and adds all their occurrences in the different platform playlists
 
    df_artist_playlists = df_artist_playlists.sort_values(platform_playlists, ascending=False).reset_index()
-   # orders occurances in the diff platform playlists from greatest to least
+   # orders occurrences in the diff platform playlists from greatest to least
    ```
 
-   The code above groups and sorts the artists by their playlist counts. The next part plots the top 5 in each playlist count per artists.
+   The code above groups and sorts the artists by their playlist counts. The next part plots the top 5 in each playlist count per artist.
 
    ```python
    fig, axes = plt.subplots(ncols=3, figsize=(20, 6))
@@ -1278,7 +1278,7 @@ Bad bunny, Taylor Swift, and Peso Pluma.
 
 We have found out that if the song has 3 or fewer credited artists, was released during the 2020s, is in tune with C sharp, and is in the major mode, the more likely that the song will show up on the given dataset. 
 
-In terms of platform statistics, if the song is in spotify playlists
+In terms of platform statistics, if the song is in Spotify playlists, Apple Music charts and 
 
 
 ---
