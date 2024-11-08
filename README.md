@@ -1294,17 +1294,22 @@ The second significant error was trying to convert the data type of the streams 
 
 The third significant error/problem I faced was editing the original dataset. I got the idea of putting 'inplace=True' in commands such as filling in missing values and dropping the wrong instance of the duplicates from GeeksforGeeks (2022).
 
+For separating the artists to have their own row, specifically the command of .explode(), I learned it from pandas (n.d.).
+
 For formatting and coding the different plots in Seaborn, I learned it from Michael Waskom, references are seen below.
 
-For labeling and sizing the different plots, I learned it from Bobbitt (2021) and Ghosh (2023).
+I learned it from Bobbitt (2021) and Ghosh (2023) for labeling and sizing the different plots.
 
 I specifically formatted and coded the pie chart in Seaborn; I learned it from GeeksforGeeks (2022a).
 
 ---
 
-
-
 ### References
-List any references used for the analysis.
+
+Bobbitt, Z. (2021, August 5). How to add a title to Seaborn Plots (With examples). Statology. https://www.statology.org/seaborn-title/
+
+Chandrikasai. (2023, April 10). Understanding the pros and cons of dropping missing values in data analysis. Medium. https://medium.com/@chandrikasai9997/understanding-the-pros-and-cons-of-dropping-missing-         values-in-data-analysis-1bd8d2300fbe
+
+
 
 ### Timeline
