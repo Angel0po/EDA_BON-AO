@@ -1270,46 +1270,16 @@ Bad bunny, Taylor Swift, and Peso Pluma.
 
    It would seem that the occurrences of artists in playlists are more consistent than the their occurences in charts. Feid, who appeared in all of the top 5 chart counts across different platforms yet did not make the top 5 of the total char counts.
 
-   Meanwhile all of the top 5 artists in chart counts across different platforms were also the same artists in top 5 among total chart counts.
-
-
+   Meanwhile, all of the top 5 artists in chart counts across different platforms were also the same artists in the top 5 among total chart counts.
    
-
-   
-
-
-   
-
-
-
-   
-
-
-
-   
-
-
-
-   
-   
-
-   
-
-   
-
-
-
-
-
-
-
-
- 
-
 ---
 
 ### 8. Key Takeaways
-Summarize the major insights gained from the analysis.
+
+We have found out that if the song has 3 or fewer credited artists, was released during the 2020s, is in tune with C sharp, and is in the major mode, the more likely that the song will show up on the given dataset. 
+
+In terms of platform statistics, if the song is in spotify playlists
+
 
 ---
 
