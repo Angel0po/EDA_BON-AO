@@ -9,7 +9,7 @@
 * [5. Data Exploration](#5-data-exploration)
    - [Loading the Data](#loading-the-data)
    - [Initial Observations](#initial-observations)
-* [6. Data Cleaning/Preparation](#6-data-cleaning/preparation)
+* [6. Data Preparation](#6-data-preparation)
    - [Missing Values](#missing-values)
    - [Duplicates](#duplicates)
 * [7. Analysis](#7-analysis)
@@ -161,7 +161,7 @@ From here, we can see that:
   
 ---
 
-### 6. Data Cleaning/Preparation
+### 6. Data Preparation
 
 #### Handling wrong datatypes
 
