@@ -40,7 +40,7 @@ This exploratory data analysis practices one's ability to code, clean data, visu
 The origin of dataset comes from Kaggle, a famous data science competition platform and the online community of data scientists and machine learning practitioners under Google LLC.
   https://www.kaggle.com/dsv/6367938
   
-This dataset contains a comprehensive list of the most famous songs of 2023 as listed on Spotify. The dataset offers a wealth of features beyond what is typically available in similar datasets. It provides insights into each song's attributes, popularity, and presence on various music platforms (Elgiriyewithana, 2023).
+This dataset contains a comprehensive list of the most famous songs of 2023, as listed on Spotify. The dataset offers many features beyond what is typically available in similar datasets. It provides insights into each song's attributes, popularity, and presence on various music platforms (Elgiriyewithana, 2023).
 
 - **Features**: The dataset includes information such as
   
@@ -166,7 +166,7 @@ From here, we can see that:
 
 #### Handling wrong datatypes
 
-   - For fixing the data type of each attribute, each one had a unique process that it had to go through.
+   - To fix the data type of each attribute, each one had a unique process that had to go through.
 
      To fix the data type of the streams attribute, the line of code was used below
 
@@ -296,8 +296,8 @@ df_spotify.drop(index=873, inplace=True)
      f"The median value of the 'in_shazam_charts' is {shazam_median}"
      ```
 
-     The first line of code uses .median() which calculates the median of a given column and stores the value of the median in shazam_median
-     The second line of code prints out the information of what is the value of the median
+     The first line of code uses .median(), which calculates the median of a given column and stores the value of the median in shazam_median
+     The second line of code prints out the information on the value of the median
      
      Output
      ![image](https://github.com/user-attachments/assets/d79231ff-8210-4bd6-aab3-56d8c950306f)
@@ -308,23 +308,23 @@ df_spotify.drop(index=873, inplace=True)
      df_spotify['in_shazam_charts'].fillna(shazam_median, inplace=True)
      ```
 
-     The code above uses .fillna which replaces all missing values with an inputted value and inplace=True is used so it is edited in the original dataset
+     The code above uses .fillna, which replaces all missing values with an inputted value, and inplace=True is used so it is edited in the original dataset
 
 ---
 
 ### 7. Analysis
 
 #### Overview of Dataset
-- The dataset originally had 953 rows, but after dealing with the duplicates, it became 949 rows, with same amount of columns.
+- The dataset originally had 953 rows, but after dealing with the duplicates, it became 949 rows, with the same amount of columns.
 
-  The data types of the dataset were either a 64-bit integer or an object. Furthermore, inspecting the data types, it would seem that the attributes of streams, in_deezer_playlists, in_shazam_charts, were incorrectly detected as an object data type. Thankfully this was dealt with inpart of the data pre-processing/preparation.
+  The data types of the dataset were either a 64-bit integer or an object. Furthermore, inspecting the data types, it would seem that the attributes of streams, in_deezer_playlists, in_shazam_charts, were incorrectly detected as an object data type. Thankfully, this was dealt with during the data pre-processing/preparation.
 
-  At first, after handling all the duplicate tracks, there were missing values in the streams column, in_shazam_charts, key columns. The missing value in the streams column got replaced by a rough estimate.
+  At first, after handling all the duplicate tracks, there were missing values in the streams column, in_shazam_charts, and key columns. The missing value in the streams column was replaced by a rough estimate.
 
-  All the rows that has a missing key were dropped. Lastly, the rest of missing values in the in_shazam_charts got replaced by the median of the column
+  All the rows that have a missing key were dropped. Lastly, the rest of the missing values in the in_shazam_charts were replaced by the median of the column
 
 #### Basic Descriptive Statistics
-- The total count, mean, median, and standard deviation of the streams attribute are as follows:
+- The total count, mean, median, and standard deviation of the stream attribute are as follows:
 
   | Data              | Streams                       |
   |---------------------|--------------------------------------|
@@ -345,7 +345,7 @@ df_spotify.drop(index=873, inplace=True)
 
   ![image](https://github.com/user-attachments/assets/7235b1fc-15e8-4efa-98ac-e63078b63a62)
 
-   It would seem that the top 2 highest streamed track has over 3 billion streams and heavily affect the calculation of the mean and standard deviation, other than that the rest of the top 10 has also over 2 billion streams. Next would be the distribution of the streams to visualize just how many tracks and is done by implementing the code below.
+   It would seem that the top 2 highest streamed tracks have over 3 billion streams, which heavily affects the calculation of the mean and standard deviation; other than that, the rest of the top 10 also have over 2 billion streams. Next would be the distribution of the streams to visualize just how many tracks, and this is done by implementing the code below.
 
   ``` python
   sns.histplot(df_spotify, x= 'streams',color='blue', element="poly").set(title = 'Distribution of total streams')
@@ -362,7 +362,7 @@ df_spotify.drop(index=873, inplace=True)
 
   ![image](https://github.com/user-attachments/assets/9da19703-10d7-4fcb-9fe2-3afd8c343c62)
 
-  The plot further suggest that the tracks with the higher number of streams heavily influence the calculated mean and standard deviation of the streams. It can also be seen that over 200 tracks did not even crack the half billion mark yet it is the calculated mean.
+  The plot further suggests that the tracks with the higher number of streams heavily influence the calculated mean and standard deviation of the streams. It can also be seen that over 200 tracks did not even crack the half-billion mark, yet it is the calculated mean.
 
   Now, let us check the distribution track's artist count and release year to see if it has any correlation to their number of streams.
 
@@ -370,7 +370,7 @@ df_spotify.drop(index=873, inplace=True)
 
   ```python
   ryd = sns.displot(df_spotify, x='released_year',color='blue', discrete=True, aspect=3).set(title = "Distribution of the most streamed spotify songs of 2023 by released year")
-   # To plot the distrbution of the released_year along with its distribution line, and each year being represented
+   # To plot the distribution of the released_year along with its distribution line, and each year is represented
    # also labels title
 
    ax = ryd.ax
@@ -386,9 +386,9 @@ df_spotify.drop(index=873, inplace=True)
 
   ![image](https://github.com/user-attachments/assets/02dfcb8a-6245-42ed-95ca-9279dd1f2db5)
 
-  It would seem the most streamed spotify songs of 2023 are mostly from the 2020's and largerly from the year 2022. This makes sense as trendy and topical music gets played over and over as they are newly released
+  It would seem the most streamed Spotify songs of 2023 are mostly from the 2020s and largely from the year 2022. This makes sense as trendy and topical music gets played over and over as they are newly released
   
-  Tracks from 2022 would also accumulate more plays at it had more time to earn it than the tracks that were released upon the year 2023. It also represents the time it takes for a song to rise in popularity. It would also seem that the distribution of the released year of the song follows recency bias, except for some goldies and some retro songs of the 2000's.
+  Tracks from 2022 would also accumulate more plays as it had more time to earn it than the tracks that were released in the year 2023. It also represents the time it takes for a song to rise in popularity. It would also seem that the distribution of the released year of the song follows recency bias, except for some goldies and some retro songs of the 2000s.
 
   To track the outliers, we have to first calculate the interquartile range to find the outliers and count them all. For this, the block of code was used below
 
@@ -413,7 +413,7 @@ df_spotify.drop(index=873, inplace=True)
 
   ![image](https://github.com/user-attachments/assets/77c99b01-85f4-435e-ab10-ca65f077fda0)
 
-  To visualize the number of outliers, a boxplot can be used to do this. As such the block of code was implemented beliow.
+  To visualize the number of outliers, a boxplot can be used to do this. As such, the block of code was implemented below.
 
   ``` python
   plt.figure(figsize=(15, 5))
@@ -433,15 +433,15 @@ df_spotify.drop(index=873, inplace=True)
 
   ![image](https://github.com/user-attachments/assets/8f7f431f-29a9-4cd5-898e-6f2a02b0ee30)
 
-   It would seem that there are about 151 outliers when it comes to the track's release year being on the list of the most streamed spotify songs of 2023. What stands out from the plot is the one song the 1940's and a lot of them are cooped up around 2010's and early 2000's.
+   It would seem that there are about 151 outliers when it comes to the track's release year being on the list of the most streamed Spotify songs of 2023. What stands out from the plot is the one song from the 1940's and a lot of them are cooped up around the 2010s and early 2000s.
 
-   For the artist count, the block of code was used below
+   For the artist count, the block of code was used below.
 
   ``` python
 
   ac = sns.displot(df_spotify, x='artist_count', color='Blue', discrete=True).set(title = "Distribution of the number of credited artists per track")
-   # To plot the distrbution of the released_year along with its distribution line, and each year being represented
-   # To plot the distrbution of the released_year along with its distribution line, and each artist count being represented
+   # To plot the distribution of the released_year along with its distribution line, and each year is represented
+   # To plot the distribution of the released_year along with its distribution line, and each artist count being represented
    # also labels title
 
    sns.set_style("white")
@@ -460,7 +460,7 @@ df_spotify.drop(index=873, inplace=True)
    ![image](https://github.com/user-attachments/assets/c54154d4-53cd-421c-9e3c-9e23f7f709ba)
 
    
-   It would seem that most of songs in the dataset are credited to one artist. The more artists are credited to a song, the less likelihood it will make the list of the most streamed. To check for outliers, the same process used as before will be applied.
+   It would seem that most of the songs in the dataset are credited to one artist. The more artists are credited to a song, the less likelihood it will make the list of the most streamed. To check for outliers, the same process used as before will be applied.
 
   ```python
   Q1ac = df_spotify['artist_count'].quantile(0.25) # 1st quarter 
@@ -512,18 +512,18 @@ df_spotify.drop(index=873, inplace=True)
 
    The top 5 most streamed tracks can be seen above. The most streamed track by far is the song 'Blinding Lights' by The Weeknd. Interestingly enough, one of the top 5 songs by streams has two artists credited on it.
 
-   To the top 5 performing artists by track count, we need to seperate all the artists into each of their own row so that they we could count their streams correctly.
+   To the top 5 performing artists by track count, we need to separate all the artists into each of their own rows so that we can count their streams correctly.
 
-   First, we should seperate all the artist by using the code below
+   First, we should separate all the artists by using the code below
 
    ```python
    df_spotify = df_spotify.explode('artist(s)_name').reset_index(drop=True)
    df_spotify['artist(s)_name'] = df_spotify['artist(s)_name'].str.strip()
-   # The .explode() makes it so that the list is counted as a row, we also reset index for cleaner analaysis
-   # The list of the seperated names in now stored in the column of the artist(s)_name
+   # The .explode() makes it so that the list is counted as a row, we also reset index for cleaner analysis
+   # The list of the separated names is now stored in the column of the artist(s)_name
    ```
 
-   Since the artists are now seperated, we should also drop the artist count column as it is no longer valid. The EDA part on the artist count is also already done so we should implement this now.
+   Since the artists are now separated, we should also drop the artist count column as it is no longer valid. The EDA part on the artist count is also already done so we should implement this now.
 
    ```python
    df_spotify.drop('artist_count',axis=1,inplace=True)
@@ -542,13 +542,13 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/9c39a24d-e0c2-4cba-8e06-7b9323d29059)
 
-   It would seem that Bad Bunny is number one in terms of the number tracks appearing in the dataset. Taylor Swift being number two makes sense as she re-releases some of her tracks with different versions as well. Kendrick Lamar being top 4 makes sense as his newest album was released on 2022.
+   It would seem that Bad Bunny is number one in terms of the number of tracks appearing in the dataset. Taylor Swift being number two makes sense as she re-releases some of her tracks with different versions as well. Kendrick Lamar being top 4 makes sense, as his newest album was released in 2022.
 
 #### Temporal Trends
 
    To check the temporal trends, we can start by checking the number of tracks released over time
 
-   For tracks released over year, it can be checked using the code below
+   For tracks released over the year, it can be checked using the code below
 
    ```python
    sns.displot(data=df_spotify, x='released_year', element='poly', fill=False, discrete=True, aspect = 3)
@@ -564,7 +564,7 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/19d18bbd-4b4c-4607-9ead-365d30bc016b)
 
-   It shows the same trend that most of the songs in the dataset are released in the 2020's as observed before. It also favors recency bias as the newer tracks gain the more streams daily.
+   It shows the same trend that most of the songs in the dataset were released in the 2020, as observed before. It also favors recency bias as the newer tracks gain more streams daily.
    
    For the release over the months, the code below can be used
 
@@ -591,7 +591,7 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/d4b284ed-3b6f-4785-a852-1898a360965d)
 
-   The months that saw the most tracks are both January and May. It would seem that the track release over the months does not follow any patterns or biases. To further explore this, we should track the release trend over the months from the year of 2019-2023 as that is the years where most of tracks are from in the dataset. To implement this the block of code is used below
+   The months that saw the most tracks are both January and May. It would seem that the track release over the months does not follow any patterns or biases. To further explore this, we should track the release trend over the months from the year 2019-2023, as that is the years where most of the tracks are from in the dataset. To implement this the block of code is used below
 
    ```python
    
@@ -634,7 +634,7 @@ df_spotify.drop(index=873, inplace=True)
 
 #### Genre and Music Characteristics
 
-   To find if there is any correlation between the musical characteristics of a song and it's number of streams. A heatmap is implemented and to visualize if there is any positive or negative correlation between them. The block of code below can be used below to implement this
+   To find if there is any correlation between the musical characteristics of a song and its number of streams. A heatmap is implemented to visualize if there is any positive or negative correlation between them. The block of code below can be used below to implement this
 
    ```python
    musical_attr = ['streams', 'bpm','danceability_%','valence_%','energy_%','acousticness_%','instrumentalness_%','liveness_%','speechiness_%']
@@ -656,13 +656,11 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/83041b19-6480-4e47-bd3b-75a830280af5)
 
-   It would seem that all of the musical attributes has a very weak negative correlation as they all have values from -0.01 to -0.19
+   It would seem that all of the musical attributes have a very weak negative correlation as they all have values from -0.01 to -0.19
    
    The musical attribute that has the least correlation to the number of streams is the bpm or beats per minute
    
    The strongest weak negative correlation is both danceability and speechiness being both -0.11 respectively
-   
-   The two seem to attributes seem to influence streams the most, although negatively
    
    The danceability and energy attributes has a very weak positive correlation, it is exactly at 0.18
    
@@ -671,6 +669,8 @@ df_spotify.drop(index=873, inplace=True)
    The strongest weak positive correlation is between valence and danceability, which is at 0.41
    
    The second strongest weak positive correlation is between valence and energy, which is at 0.36
+
+   These two seem to influece the number of streams the most, although 
 
 #### Platform Popularity
 
@@ -1265,10 +1265,10 @@ df_spotify.drop(index=873, inplace=True)
 
    ![image](https://github.com/user-attachments/assets/cede6479-637a-4fb5-ac63-e8ac2922c460)
 
-   The Weeknd tops out both the total playlists and charts count, along with him that appears in both top 5 of the two categories are
-Bad bunny, Taylor Swift, and Peso Pluma.
+   The Weeknd tops out both the total playlists and charts count, and with him that appears in both top 5 of the two categories are
+Bad Bunny, Taylor Swift, and Peso Pluma.
 
-   It would seem that the occurrences of artists in playlists are more consistent than the their occurences in charts. Feid, who appeared in all of the top 5 chart counts across different platforms yet did not make the top 5 of the total char counts.
+   It would seem that the occurrences of artists in playlists are more consistent than their occurrences in charts. Feid, who appeared in all of the top 5 chart counts across different platforms yet did not make the top 5 of the total char counts.
 
    Meanwhile, all of the top 5 artists in chart counts across different platforms were also the same artists in the top 5 among total chart counts.
    
@@ -1278,13 +1278,10 @@ Bad bunny, Taylor Swift, and Peso Pluma.
 
 We have found out that if the song has 3 or fewer credited artists, was released during the 2020s, is in tune with C sharp, and is in the major mode, the more likely that the song will show up on the given dataset. 
 
-In terms of platform statistics, if the song is in Spotify playlists, Apple Music charts and Shazam charts
+In terms of platform statistics, if the song is in Spotify playlists, Apple Music charts, and Shazam charts, it is more likely that the song will show up on the given dataset. It was also found that the artist frequency in playlists across all platforms is more consistent than the artist frequency in charts across all platforms.
 
 
----
 
-### 9. Final Words
-Provide a brief conclusion of the project findings.
 
 ---
 
@@ -1292,7 +1289,7 @@ Provide a brief conclusion of the project findings.
 
 ---
 
-### 11. New Learnings
+### 11. Key Learnings
 
 ### References
 List any references used for the analysis.
