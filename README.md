@@ -164,7 +164,7 @@ From here, we can see that:
 
 ### 6. Data Preparation
 
-#### Handling wrong datatypes
+#### Handling Wrong Datatypes
 
    - To fix the data type of each attribute, each one had a unique process that had to go through.
 
