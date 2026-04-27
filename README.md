@@ -1,5 +1,5 @@
 
-# Project Title: Exploratory Data Analysis of [Dataset Name]
+# Project Title: Exploratory Data Analysis of Spotify 2023
 
 ## Table of Contents
 * [1. EDA Overview](#1-eda-overview)
